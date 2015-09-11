@@ -1,0 +1,79 @@
+#define FONT1 xft:source code pro for powerline:regular:pixelsize=13:antialias=true:hinting=true
+#define FONT2 xft:source code pro for powerline:semibold:pixelsize=13:antialias=true:hinting=true
+
+! Xft settings
+Xft.dpi:                96
+Xft.antialias:          true
+Xft.hinting:            full
+
+!URxvt settings
+URxvt.internalBorder:           10
+URxvt.buffered:                 false
+URxvt.saveLines:                12000
+URxvt.scrollBar:                false
+URxvt.depth:                    32
+URxvt.perl-ext-common:          vtwheel,default,clipboard,matcher
+URxvt.url-launcher:             /usr/bin/xdg-open
+URxvt.matcher.button:           1
+URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
+URxvt.iso14755:                 False
+URxvt.termName:                 rxvt-unicode-256color
+URxvt.font:                     FONT1
+URxvt.boldFont:                 FONT2
+
+! Rofi
+rofi.opacity:   80
+rofi.width:     50
+rofi.lines:     5
+rofi.font:      Source Code Pro 9
+
+! Base16 Flat
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+#define base00 #2C3E50
+#define base01 #34495E
+#define base02 #7F8C8D
+#define base03 #95A5A6
+#define base04 #BDC3C7
+#define base05 #e0e0e0
+#define base06 #f5f5f5
+#define base07 #ECF0F1
+#define base08 #E74C3C
+#define base09 #E67E22
+#define base0A #F1C40F
+#define base0B #2ECC71
+#define base0C #1ABC9C
+#define base0D #3498DB
+#define base0E #9B59B6
+#define base0F #be643c
+
+*.foreground:   base05
+*.background:   base00
+*.cursorColor:  base05
+
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
+
+*.color8:       base03
+*.color9:       base08
+*.color10:      base0B
+*.color11:      base0A
+*.color12:      base0D
+*.color13:      base0E
+*.color14:      base0C
+*.color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+*.color21:      base06
