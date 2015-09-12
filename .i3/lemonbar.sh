@@ -1,6 +1,7 @@
 PANEL_FIFO="/tmp/i3_lemonbar_${USER}"
 FONT1="source code pro for powerline:regular:size=9"
 FONT2="Font Awesome::regular:size=10"
+DEVICE=$(iw dev | grep Interface | awk '{print $2}')
 H_GAP=20
 V_GAP=10
 BAR_HEIGHT=18
@@ -58,8 +59,8 @@ while true; do
 done > $PANEL_FIFO &
 
 while true; do
-    echo "SSID$(iw dev wlp4s1 link | grep SSID | awk '{print $2}')";
-    echo "SIG$(iw dev wlp4s1 link | grep signal | awk '{print $2}')";
+    echo "SSID$(iw dev ${DEVICE} link | grep SSID | awk '{print $2}')";
+    echo "SIG$(iw dev ${DEVICE} link | grep signal | awk '{print $2}')";
     sleep 5;
 done > $PANEL_FIFO &
 
