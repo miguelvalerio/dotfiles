@@ -99,7 +99,8 @@ set $WS5 "5:"
 set $WS6 "6:"
 set $WS7 "7:"
 set $WS8 "8:"
-set $WS9 "9"
+set $WS9 "9:"
+set $WS10 "10:"
 
 bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
@@ -219,4 +220,5 @@ exec --no-startup-id thunar
 exec --no-startup-id feh --bg-scale ~/.wallpapers/wp
 exec --no-startup-id i3-msg 'workspace $WS6; exec urxvt +hold -e "ncmpcpp"; workspace $WS1'
 exec --no-startup-id i3-msg 'workspace $WS6; exec urxvt +hold -e "alsamixer"; workspace $WS1'
+exec --no-startup-id i3-msg 'workspace $WS9; exec livestreamer-twitch-gui; workspace $WS1'
 exec --no-startup-id i3-msg 'workspace $WS4; exec spotify; workspace $WS1'
