@@ -11,7 +11,7 @@ URxvt.internalBorder:           10
 URxvt.buffered:                 false
 URxvt.saveLines:                12000
 URxvt.scrollBar:                false
-URxvt.depth:                    32
+!URxvt.depth:                    32
 URxvt.perl-ext-common:          vtwheel,default,clipboard,matcher
 URxvt.url-launcher:             /usr/bin/xdg-open
 URxvt.matcher.button:           1
