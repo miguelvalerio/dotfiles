@@ -1,4 +1,4 @@
-#define FONT1 xft:source code pro for powerline:regular:pixelsize=13:antialias=true:hinting=true, xft:inconsolata:regular:pixelsize=13:antialias=true:hinting=true
+#define FONT1 xft:source\ code\ pro\ for\ powerline:regular:pixelsize=13:antialias=true:hinting=true, xft:Meslo\ LG\ M\ for\ Powerline:pixelsize=15
 #define FONT2 xft:source code pro for powerline:semibold:pixelsize=13:antialias=true:hinting=true
 
 ! Xft settings
@@ -11,7 +11,7 @@ URxvt.internalBorder:           10
 URxvt.buffered:                 false
 URxvt.saveLines:                12000
 URxvt.scrollBar:                false
-!URxvt.depth:                    32
+URxvt.depth:                    32
 URxvt.perl-ext-common:          vtwheel,default,clipboard,matcher
 URxvt.url-launcher:             /usr/bin/xdg-open
 URxvt.matcher.button:           1

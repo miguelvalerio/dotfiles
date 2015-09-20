@@ -1,8 +1,3 @@
-let base16colorspace=256
-set t_Co=256
-colorscheme base16-flat
-set background=dark
-
 "Vundle
 set nocompatible
 filetype off
@@ -17,6 +12,11 @@ Bundle 'chriskempson/base16-vim'
 Bundle 'Raimondi/delimitMate'
 filetype plugin indent on
 
+let base16colorspace=256
+set t_Co=256
+colorscheme base16-flat
+set background=dark
+
 set relativenumber
 syntax enable
 set clipboard=unnamed
@@ -27,8 +27,9 @@ map  <F12> :set hls!<CR>
 imap <F12> <ESC>:set hls!<CR>a
 vmap <F12> <ESC>:set hls!<CR>gv
 
-"CTRLP show hidden files
+"CTRLP
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_follow_symlinks = 1
 
 "No swap files
 set noswapfile

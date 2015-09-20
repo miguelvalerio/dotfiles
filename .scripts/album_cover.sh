@@ -11,5 +11,5 @@ while :; do
     album_cover=$(ls "$album_directory" | grep "\.jpg\|\.png")
     [ -z "${album_cover}" ] && cover=${NO_COVER} || cover=${album_directory}/${album_cover}
     ln -f -s "$cover" /tmp/cover
-    sleep 2
+    mpc idle
 done

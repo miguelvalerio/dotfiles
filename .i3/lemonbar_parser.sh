@@ -75,7 +75,7 @@ while read -r line; do
             wsp=""
             first_bg=${ACT_BG}
             last_fg=${ACT_BG}
-            line="$(echo $line | sed "s/[0-9]://g")"
+            line="$(echo $line | sed "s/[0-9]*://g")"
             set -- ${line#???}
             while [ $# -gt 0 ] ; do
                 case $1 in
