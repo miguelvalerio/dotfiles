@@ -2,6 +2,7 @@ PANEL_FIFO="/tmp/i3_lemonbar_${USER}"
 FONT1="source code pro for powerline:regular:size=9"
 FONT2="Font Awesome::regular:size=10"
 DEVICE=$(iw dev | grep Interface | awk '{print $2}')
+SONG_MAX_LENGTH=35
 H_GAP=20
 V_GAP=10
 BAR_HEIGHT=18
@@ -41,16 +42,29 @@ while true; do
         prev_contents=${contents}
         count=0
         increment=1
+        timer=0
+        stop=1
     fi
-    if [ ${#contents} -gt 50 ]; then
-        end=$((count+49))
+    if [ ${#contents} -gt ${SONG_MAX_LENGTH} ]; then
+        end=$((count+SONG_MAX_LENGTH-1))
         song="$(echo ${contents} | cut -c${count}-${end})⛾"
-        if [ ${end} -eq ${#contents} ]; then
-            increment=-1
-        elif [ ${count} -eq 1 ]; then
-            increment=1
+        if [ ${stop} -eq 0 ]; then
+            timer=$((timer+1))
+            if [ ${timer} -eq 5 ]; then
+                stop=1
+                timer=0
+                count=$((count+increment))
+            fi
+        else
+            if [ ${end} -eq ${#contents} ]; then
+                stop=0
+                increment=-1
+            elif [ ${count} -eq 1 ]; then
+                stop=0
+                increment=1
+            fi
+            [ "${stop}" -eq 1 ] && count=$((count+increment))
         fi
-        count=$((count+increment))
     else
         song=${contents}
     fi

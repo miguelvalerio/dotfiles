@@ -18,7 +18,8 @@
             "percent": 0.5,
             "swallows": [
                {
-               "class": "^URxvt$"
+               "class": "^URxvt$",
+               "title": "^player$"
                }
             ],
             "type": "con"
