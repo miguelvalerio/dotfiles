@@ -23,7 +23,7 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "${PANEL_FIFO}" ] && rm "${PANEL_FIFO}"
 mkfifo "${PANEL_FIFO}"
 
-$(dirname $0)/i3_workspaces.pl > "${PANEL_FIFO}" &
+$(dirname $0)/i3_workspaces.py > "${PANEL_FIFO}" &
 
 while true; do
     echo "VOL$(amixer get Master | awk -F"[]%[]" '/%/ { sum += $2; n++ } END { if (n > 0) print sum/n;}')";

@@ -43,6 +43,7 @@ class State(object):
 class i3ws(object):
     ws_format = '%s%s '
     end_format = 'WSP%s'
+    mode_format = 'MOD%s'
     state = State()
 
     def __init__(self, state=None):
@@ -60,7 +61,9 @@ class i3ws(object):
         self.mode_subscription = i3.Subscription(self.mode, 'mode')
 
     def mode(self, event, mode, _):
-        self.display(event)
+        if 'change' in event:
+            self.display(self.mode_format % event['change'])
+
 
     def change(self, event, workspaces):
         # Receives event and workspace data

@@ -18,6 +18,8 @@ VOL_ICON_FG=${DATE_ICON_FG}
 WIFI_FG=${DATE_FG}
 WIFI_BG=${DATE_BG}
 WIFI_ICON_FG=${DATE_ICON_FG}
+MOD_FG=${MUSIC_FG}
+MOD_BG=${MUSIC_BG}
 
 SEP_R=""
 SEP_L=""
@@ -71,33 +73,33 @@ while read -r line; do
         DATE*)
             date="%{F${DATE_ICON_FG}}%{B${BG}} ${CALENDAR_ICON} %{F${DATE_FG}}${line#????} "
             ;;
+        MOD*)
+            mode=""
+            if [ "${line#???}" != "default" ]; then
+                translated=$(echo "${line#???}" | sed "s/,/ ${SEP_R_L}/g")
+                mode="%{R}%{B${MOD_BG}}${SEP_R}%{F${MOD_FG}} ${translated} "
+            fi 
+            ;;
         WSP*)
-            wsp=""
-            first_bg=${ACT_BG}
-            last_fg=${ACT_BG}
+            wsp="%{F${BG}}"
+            draw=${SEP_R}
             line="$(echo $line | sed "s/[0-9]*://g")"
             set -- ${line#???}
             while [ $# -gt 0 ] ; do
                 case $1 in
                     FOC*)
-                        if [ -n "${wsp}" ]; then
-                            wsp="${wsp::-1}%{F${FOC_FG}}%{B${FOC_BG}}${SEP_R} ${1#???} %{F${ACT_FG}}%{B${ACT_BG}}${SEP_R}"
-                        else
-                            wsp="${wsp}%{F${FOC_FG}}%{B${FOC_BG}} ${1#???} %{F${ACT_FG}}%{B${ACT_BG}}${SEP_R}"
-                            first_bg=${FOC_BG}
-                        fi
-                        last_fg=${ACT_FG}
+                        [ "${draw}" == "${SEP_R}" ] && fore=${BG} || fore=${FOC_FG}
+                        wsp="${wsp}%{F${fore}}%{B${FOC_BG}}${SEP_R}%{F${FOC_FG}} ${1#???}%{F${FOC_BG}}${SEP_R}"
+                        draw=${SEP_R}
                         ;;
                     INA*|ACT*|URG*)
-                        wsp="${wsp}%{F${ACT_FG}}%{B${ACT_BG}} ${1#???} ${SEP_R_L}"
-                        last_fg=${FOC_FG}
+                        wsp="${wsp}%{B${ACT_BG}}${draw}%{F${ACT_FG}} ${1#???} "
+                        draw="${SEP_R_L}"
                         ;;
                 esac
                 shift
             done
-            wsp="%{F${BG}}%{B${first_bg}}${SEP_R}${wsp}"
-            wsp="${wsp::-1}%{F${last_fg}}%{B${BG}}${SEP_R}"
             ;;
     esac
-    echo "%{l}${wsp}%{c}${music}%{r}%{B${BG}}${wifi}${vol}${time}${date}"
+    echo "%{l}${wsp}${mode}%{R}%{B${BG}}${SEP_R}%{c}${music}%{r}%{B${BG}}${wifi}${vol}${time}${date}"
 done
