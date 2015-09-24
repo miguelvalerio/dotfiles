@@ -46,15 +46,17 @@ while read -r line; do
             case $data in
                 "[playing]"*)
                     contents="${PLAY_ICON} ${data#?????????}"
+                    play_pause="pause"
                     ;;
                 "[paused]"*)
                     contents="${PAUSE_ICON} ${data#????????}"
+                    play_pause="play"
                     ;;
                 *)
                     contents="No MPD Connection"
                     ;;
             esac
-            music="%{B${MUSIC_BG}}%{F${BG}}${SEP_R} %{F${MUSIC_FG}}%{B${MUSIC_BG}}${contents} %{F${BG}}%{B${MUSIC_BG}}${SEP_L}"
+            music="%{A4:mpc next:}%{A5:mpc prev:}%{A:mpc ${play_pause}:}%{B${MUSIC_BG}}%{F${BG}}${SEP_R} %{F${MUSIC_FG}}%{B${MUSIC_BG}}${contents} %{F${BG}}%{B${MUSIC_BG}}${SEP_L}%{A}%{A}%{A}"
             ;;
         VOL*)
             volume=${line#???}
