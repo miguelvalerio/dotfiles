@@ -34,8 +34,6 @@ fi
 
 xinput set-prop "Razer  Razer Abyssus" "libinput Accel Speed" -1 &
 
-start-pulseaudio-x11 &
-
 #twm &
 #xclock -geometry 50x50-1+1 &
 #xterm -geometry 80x50+494+51 &
