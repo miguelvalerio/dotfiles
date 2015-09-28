@@ -1,17 +1,8 @@
+#!/bin/bash
+
+. $(dirname $0)/lemonbar_config
+
 PANEL_FIFO="/tmp/i3_lemonbar_${USER}"
-FONT1="source code pro for powerline:regular:size=9"
-FONT2="Font Awesome::regular:size=10"
-DEVICE=$(iw dev | grep Interface | awk '{print $2}')
-SONG_MAX_LENGTH=30
-H_GAP=20
-V_GAP=10
-BAR_HEIGHT=18
-BAR_LENGTH=""
-
-res=$(xrandr | grep '*' | awk -F'x' '{print $1}')
-length=$((res - H_GAP * 2))
-
-[ -z "${BAR_LENGTH}" ] && BAR_LENGTH=${length}
 
 if [ $(pgrep -cx $(basename $0)) -gt 1 ] ; then
     printf "%s\n" "The status bar is already running." >&2

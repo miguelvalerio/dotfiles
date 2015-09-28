@@ -1,40 +1,6 @@
-BG="#1A1A1A"
-FG="#ADADAD"
-FOC_FG="#2C3E50"
-FOC_BG="#3498DB"
-ACT_FG="#3498DB"
-ACT_BG="#2C3E50"
-MUSIC_FG=${FOC_FG}
-MUSIC_BG=${FOC_BG}
-DATE_FG=${FG}
-DATE_BG=${BG}
-DATE_ICON_FG=${ACT_FG}
-TIME_FG=${DATE_FG}
-TIME_BG=${BG}
-TIME_ICON_FG=${DATE_ICON_FG}
-VOL_FG=${DATE_FG}
-VOL_BG=${DATE_BG}
-VOL_ICON_FG=${DATE_ICON_FG}
-WIFI_FG=${DATE_FG}
-WIFI_BG=${DATE_BG}
-WIFI_ICON_FG=${DATE_ICON_FG}
-MOD_FG=${MUSIC_FG}
-MOD_BG=${MUSIC_BG}
+#!/bin/bash
 
-SEP_R=""
-SEP_L=""
-SEP_R_L=""
-SEP_L_L=""
-
-PLAY_ICON=""
-PAUSE_ICON=""
-CALENDAR_ICON=""
-TIME_ICON=""
-VOL_UP_ICON=""
-VOL_DOWN_ICON=""
-VOL_OFF_ICON=""
-WIFI_ICON=""
-
+. $(dirname $0)/lemonbar_config
 
 while read -r line; do
     case $line in
@@ -56,7 +22,7 @@ while read -r line; do
                     contents="No MPD Connection"
                     ;;
             esac
-            music="%{A4:mpc next:}%{A5:mpc prev:}%{A:mpc ${play_pause}:}%{B${MUSIC_BG}}%{F${BG}}${SEP_R} %{F${MUSIC_FG}}%{B${MUSIC_BG}}${contents} %{F${BG}}%{B${MUSIC_BG}}${SEP_L}%{A}%{A}%{A}"
+            music="%{A4:mpc next:}%{A5:mpc prev:}%{A:mpc ${play_pause}:}%{B${MUSIC_BG}}%{F${BAR_BG}}${SEP_R} %{F${MUSIC_FG}}%{B${MUSIC_BG}}${contents} %{F${BAR_BG}}%{B${MUSIC_BG}}${SEP_L}%{A}%{A}%{A}"
             ;;
         VOL*)
             volume=${line#???}
@@ -73,7 +39,7 @@ while read -r line; do
             time="%{F${TIME_ICON_FG}}%{B${TIME_BG}} ${TIME_ICON} %{F${TIME_FG}}${line#????} "
             ;;
         DATE*)
-            date="%{F${DATE_ICON_FG}}%{B${BG}} ${CALENDAR_ICON} %{F${DATE_FG}}${line#????} "
+            date="%{F${DATE_ICON_FG}}%{B${BAR_BG}} ${CALENDAR_ICON} %{F${DATE_FG}}${line#????} "
             ;;
         MOD*)
             mode=""
@@ -83,14 +49,14 @@ while read -r line; do
             fi 
             ;;
         WSP*)
-            wsp="%{F${BG}}"
+            wsp="%{F${BAR_BG}}"
             draw=${SEP_R}
             line="$(echo $line | sed "s/[0-9]*://g")"
             set -- ${line#???}
             while [ $# -gt 0 ] ; do
                 case $1 in
                     FOC*)
-                        [ "${draw}" == "${SEP_R}" ] && fore=${BG} || fore=${FOC_FG}
+                        [ "${draw}" == "${SEP_R}" ] && fore=${BAR_BG} || fore=${ACT_BG}
                         wsp="${wsp}%{F${fore}}%{B${FOC_BG}}${SEP_R}%{F${FOC_FG}} ${1#???}%{F${FOC_BG}}${SEP_R}"
                         draw=${SEP_R}
                         ;;
@@ -103,5 +69,5 @@ while read -r line; do
             done
             ;;
     esac
-    echo "%{l}${wsp}${mode}%{R}%{B${BG}}${SEP_R}%{c}${music}%{r}%{B${BG}}${wifi}${vol}${time}${date}"
+    echo "%{l}${wsp}${mode}%{R}%{B${BAR_BG}}${SEP_R}%{c}${music}%{r}${wifi}${vol}${time}${date}"
 done

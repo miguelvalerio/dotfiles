@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# Colors
+BG=$(xrdb -query | grep -i background: | tail -c 8)
+FG=$(xrdb -query | grep -i foreground: | tail -c 8)
+
+BLACK=$(xrdb -query | grep -i color0: | tail -c 8)
+BBLACK=$(xrdb -query | grep -i color8: | tail -c 8)
+
+RED=$(xrdb -query | grep -i color1: | tail -c 8)
+BRED=$(xrdb -query | grep -i color9: | tail -c 8)
+
+GREEN=$(xrdb -query | grep -i color2: | tail -c 8)
+BGREEN=$(xrdb -query | grep -i color10: | tail -c 8)
+
+YELLOW=$(xrdb -query | grep -i color3: | tail -c 8)
+BYELLOW=$(xrdb -query | grep -i color11: | tail -c 8)
+
+BLUE=$(xrdb -query | grep -i color4: | tail -c 8)
+BBLUE=$(xrdb -query | grep -i color12: | tail -c 8)
+
+MAGENTA=$(xrdb -query | grep -i color5: | tail -c 8)
+BMAGENTA=$(xrdb -query | grep -i color13: | tail -c 8)
+
+CYAN=$(xrdb -query | grep -i color6: | tail -c 8)
+BCYAN=$(xrdb -query | grep -i color14: | tail -c 8)
+
+WHITE=$(xrdb -query | grep -i color7: | tail -c 8)
+BWHITE=$(xrdb -query | grep -i color15: | tail -c 8)
+
+# Bar colors
+BAR_BG="#1A1A1A"
+BAR_FG=${FG}
+FOC_FG=${BG}
+FOC_BG=${BBLUE}
+ACT_FG=${BBLUE}
+ACT_BG=${BG}
+MUSIC_FG=${BG}
+MUSIC_BG=${BBLUE}
+DATE_FG=${FG}
+DATE_BG=${BAR_BG}
+DATE_ICON_FG=${BBLUE}
+TIME_FG=${DATE_FG}
+TIME_BG=${BAR_BG}
+TIME_ICON_FG=${DATE_ICON_FG}
+VOL_FG=${DATE_FG}
+VOL_BG=${DATE_BG}
+VOL_ICON_FG=${DATE_ICON_FG}
+WIFI_FG=${DATE_FG}
+WIFI_BG=${DATE_BG}
+WIFI_ICON_FG=${DATE_ICON_FG}
+
+# Icons
+SEP_R=""
+SEP_L=""
+SEP_R_L=""
+SEP_L_L=""
+
+PLAY_ICON=""
+PAUSE_ICON=""
+CALENDAR_ICON=""
+TIME_ICON=""
+VOL_UP_ICON=""
+VOL_DOWN_ICON=""
+VOL_OFF_ICON=""
+WIFI_ICON=""
+
+# Fonts
+FONT1="source code pro for powerline:regular:size=9"
+FONT2="Font Awesome::regular:size=10"
+
+# Wifi interface
+DEVICE=$(iw dev | grep Interface | awk '{print $2}')
+
+# Song section max length
+SONG_MAX_LENGTH=30
+
+# gaps
+H_GAP=20
+V_GAP=10
+
+# Size
+BAR_HEIGHT=18
+BAR_LENGTH=$(($(xrandr | grep '*' | awk -F'x' '{print $1}') - H_GAP * 2))
