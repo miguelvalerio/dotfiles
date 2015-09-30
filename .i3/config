@@ -162,7 +162,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  backgr. text    indicator
-client.focused          #A52A2A #A52A2A #A52A2A #A52A2A
+client.focused          #A52A2A #A52A2A #ffffff #A52A2A
 client.focused_inactive #000000 #000000 #ffffff #ffffff
 client.unfocused        #000000 #000000 #ffffff #ffffff
 client.urgent           #000000 #000000 #ffffff #ffffff
