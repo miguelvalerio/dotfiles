@@ -67,7 +67,7 @@ WIFI_ICON=""
 
 # Fonts
 FONT1="source code pro for powerline:regular:size=9"
-FONT2="Font Awesome::regular:size=10"
+FONT2="Font Awesome:regular:size=10"
 
 # Wifi interface
 DEVICE=$(iw dev | grep Interface | awk '{print $2}')

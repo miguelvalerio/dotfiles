@@ -10,6 +10,7 @@ Bundle 'klen/python-mode'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'chriskempson/base16-vim'
 Bundle 'Raimondi/delimitMate'
+Bundle 'chrisbra/csv.vim'
 filetype plugin indent on
 
 let base16colorspace=256

@@ -26,6 +26,7 @@
 # A few utility functions to make it easy and re-usable to draw segmented prompts
 
 CURRENT_BG='NONE'
+DEFAULT_USER=`whoami`
 
 # Fix odd char on mac
 if [[ `uname` == 'Darwin' ]]; then
@@ -68,6 +69,8 @@ prompt_end() {
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@%m"
+  else
+    prompt_segment black default
   fi
 }
 
