@@ -84,7 +84,6 @@ man() {
     man "$@"
 }
 
-export DE="gnome"
 export BROWSER="/usr/share/applications/chromium.desktop"
 alias rxvt=urxvt
 export EDITOR=/usr/bin/vim
