@@ -74,7 +74,8 @@ class i3ws(object):
 
     def format(self, workspaces, outputs):
         # Formats the text according to the workspace data given.
-        out = ''
+        out = []
+        cur_output = None
         for workspace in workspaces:
             output = None
             for output_ in outputs:
@@ -83,16 +84,24 @@ class i3ws(object):
                     break
             if not output:
                 continue
+            if cur_output != output['name']:
+                out.append('')
+                cur_output = output['name']
             st = self.state.get_state(workspace, output)
             name = workspace['name']
             item= self.ws_format % (st, name)
-            out += item
-        return self.end_format % out
+            out[-1] += item
+        return [self.end_format % str(i) + wsp  for i, wsp in enumerate(out)]
 
     def display(self, text):
         # Displays the text in stout
-        print(text)
-        sys.stdout.flush()
+        if type(text) is list:
+            for item in text:
+                print(item)
+                sys.stdout.flush()
+        else:
+            print(text)
+            sys.stdout.flush()
 
     def quit(self):
         # Quits the i3ws; closes the subscription and terminates

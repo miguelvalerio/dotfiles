@@ -66,6 +66,12 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+#
+# move current workspace between monitors
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+j move workspace to output down
+bindsym $mod+Control+k move workspace to output up
+bindsym $mod+Control+l move workspace to output right
 
 # split in horizontal orientation
 bindsym $mod+b split h
@@ -91,22 +97,22 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # focus mouse
 focus_follows_mouse no
 
 # switch to workspace
-set $WS1 "1:"
-set $WS2 "2:"
-set $WS3 "3:"
-set $WS4 "4:"
-set $WS5 "5:"
-set $WS6 "6:"
-set $WS7 "7:"
-set $WS8 "8:"
-set $WS9 "9:"
-set $WS10 "10:"
+set $WS1 "1-"
+set $WS2 "2-"
+set $WS3 "3-"
+set $WS4 "4-"
+set $WS5 "5-"
+set $WS6 "6-"
+set $WS7 "7-"
+set $WS8 "8-"
+set $WS9 "9-"
+set $WS10 "10-"
 
 bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
@@ -165,7 +171,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  backgr. text    indicator
-client.focused          #A52A2A #A52A2A #ffffff #A52A2A
+client.focused          #3498DB #3498DB #ffffff #3498DB
 client.focused_inactive #000000 #000000 #ffffff #ffffff
 client.unfocused        #000000 #000000 #ffffff #ffffff
 client.urgent           #000000 #000000 #ffffff #ffffff
@@ -175,7 +181,6 @@ hide_edge_borders both
 new_window pixel 5
 
 for_window [class="chromium"] border none
-for_window [class="Thunar"] border none
 
 workspace_auto_back_and_forth yes
 
@@ -186,6 +191,7 @@ bar {
 }
 
 assign [class="chromium"] $WS2
+assign [class="Firefox"] $WS2
 assign [class="Spotify"] $WS4
 assign [class="Thunar"] $WS5
 assign [class="MPlayer"] $WS7
@@ -212,13 +218,16 @@ mode "$mode_system" {
 gaps inner 10
 gaps outer 10
 
+workspace $WS6 gaps inner 0
+
 bindsym $mod+Pause mode "$mode_system"
 
-exec --no-startup-id conky -c ~/.config/lemonbar_conky
+# exec --no-startup-id conky -c ~/.config/lemonbar_conky
 exec --no-startup-id xflux -l 40 -g 8
 exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id compton --config ~/.config/compton.conf
-exec --no-startup-id chromium
+# exec --no-startup-id chromium
+exec --no-startup-id firefox
 exec --no-startup-id thunar
 exec --no-startup-id feh --bg-scale ~/.wallpapers/wp
 exec --no-startup-id ~/.scripts/album_cover.sh

@@ -50,24 +50,39 @@ while read -r line; do
             ;;
         WSP*)
             wsp="%{F${BAR_BG}}"
-            draw=${SEP_R}
-            line="$(echo $line | sed "s/[0-9]*://g")"
-            set -- ${line#???}
+            # draw=${SEP_R}
+            monitor=${line:3:1}
+            set -- ${line#????}
             while [ $# -gt 0 ] ; do
+                ws_icon="$(echo ${1#???} | sed 's/[0-9]*-//g')"
                 case $1 in
                     FOC*)
-                        [ "${draw}" == "${SEP_R}" ] && fore=${BAR_BG} || fore=${ACT_BG}
-                        wsp="${wsp}%{F${fore}}%{B${FOC_BG}}${SEP_R}%{F${FOC_FG}} ${1#???}%{F${FOC_BG}}${SEP_R}"
+                        # [ "${draw}" == "${SEP_R}" ] && fore=${BAR_BG} || fore=${ACT_BG}
+                        fore=${BAR_BG}
+                        ws="%{F${fore}}%{B${FOC_BG}}${SEP_R}%{F${FOC_FG}} ${ws_icon}%{F${FOC_BG}}${SEP_R}"
+                        [ "$POWERLINE_MODE" = false ] && ws="${ws} "
+                        [ "$UNDERLINE_MODE" = true ] && ws="%{+uU${UNDERLINE}}${ws}%{-u}"
+                        [ "$CLICK_MODE" = true ] && ws="%{A1:i3-msg workspace back_and_forth:}${ws}%{A}"
+                        wsp="${wsp}${ws}"
                         draw=${SEP_R}
                         ;;
                     INA*|ACT*|URG*)
-                        wsp="${wsp}%{B${ACT_BG}}${draw}%{F${ACT_FG}} ${1#???} "
+                        ws="%{B${ACT_BG}}${draw}%{F${ACT_FG}} ${ws_icon} "
+                        [ "$POWERLINE_MODE" = false ] && ws="${ws} "
+                        [ "$CLICK_MODE" = true ] && ws="%{A1:i3-msg workspace ${1#???}:}${ws}%{A}"
+                        wsp="${wsp}${ws}"
                         draw="${SEP_R_L}"
                         ;;
                 esac
                 shift
             done
+            monitors[${monitor}]=${wsp}
             ;;
     esac
-    echo "%{l}${wsp}${mode}%{R}%{B${BAR_BG}}${SEP_R}%{c}${music}%{r}${wifi}${vol}${time}${date}"
+    output=""
+    for mon in ${!monitors[@]}; do
+        [ $mon -eq -1 ] && break
+        output="${output}%{S$mon}}%{l}${monitors[$mon]}${mode}%{R}%{B${BAR_BG}}${SEP_R}%{c}${music}%{r}${vol}${date}${time}"
+    done
+    echo "$output"
 done

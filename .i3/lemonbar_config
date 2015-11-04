@@ -1,6 +1,10 @@
 #!/bin/bash
 
+POWERLINE_MODE=false
+CLICK_MODE=true
+UNDERLINE_MODE=true
 # Colors
+
 BG=$(xrdb -query | grep -i background: | tail -c 8)
 FG=$(xrdb -query | grep -i foreground: | tail -c 8)
 
@@ -29,13 +33,13 @@ WHITE=$(xrdb -query | grep -i color7: | tail -c 8)
 BWHITE=$(xrdb -query | grep -i color15: | tail -c 8)
 
 # Bar colors
-BAR_BG="#1A1A1A"
+BAR_BG=${BG}
 BAR_FG=${FG}
 FOC_FG=${BG}
-FOC_BG=${BBLUE}
+FOC_BG=${WHITE}
 ACT_FG=${BBLUE}
 ACT_BG=${BG}
-MUSIC_FG=${BG}
+MUSIC_FG=${WHITE}
 MUSIC_BG=${BBLUE}
 DATE_FG=${FG}
 DATE_BG=${BAR_BG}
@@ -49,12 +53,20 @@ VOL_ICON_FG=${DATE_ICON_FG}
 WIFI_FG=${DATE_FG}
 WIFI_BG=${DATE_BG}
 WIFI_ICON_FG=${DATE_ICON_FG}
+UNDERLINE=${BBLUE}
 
 # Icons
-SEP_R=""
-SEP_L=""
-SEP_R_L=""
-SEP_L_L=""
+if [ "$POWERLINE_MODE" = true ]; then
+    SEP_R=""
+    SEP_L=""
+    SEP_R_L=""
+    SEP_L_L=""
+else
+    SEP_R=" "
+    SEP_L=" "
+    SEP_R_L=" "
+    SEP_L_L=" "
+fi
 
 PLAY_ICON=""
 PAUSE_ICON=""
@@ -80,5 +92,5 @@ H_GAP=20
 V_GAP=10
 
 # Size
-BAR_HEIGHT=18
-BAR_LENGTH=$(($(xrandr | grep '*' | awk -F'x' '{print $1}') - H_GAP * 2))
+BAR_HEIGHT=22
+# BAR_LENGTH=$(($(xrandr | grep '*' | awk -F'x' '{print $1}') - H_GAP * 2))
