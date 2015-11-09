@@ -8,7 +8,7 @@
 
 body {
   background: #2c3e50;
-  padding-top: 20%;
+  padding-top: 10%;
   font-size: 11px;
   width: 88%;
   margin: auto;
@@ -19,7 +19,7 @@ body {
   font-smoothing: antialiased; }
 
 p, li, a {
-  color: #27ae60;
+  color: #e0e0e0;
   font-family: "Roboto", "Consolas", "Helvetica", sans-serif;
   font-weight: 400;
   letter-spacing: 2px; }
@@ -30,7 +30,7 @@ p, li, a {
   text-align: center; }
 
 .favorites p {
-  border-bottom: 1px solid #27ae60;
+  border-bottom: 1px solid #e0e0e0;
   padding-right: 100%; }
 
 .list {
@@ -48,19 +48,20 @@ a {
   padding: 3px; }
 
 a:hover {
-  color: #ecf0f1;
-  background: #27ae60; }
+  color: #3498DB;
+  background: #e0e0e0; }
 
 .googles {
-  width: 90%;
-  margin: 25px auto;
+  width: 60%;
+  margin: 25px auto 100px;
   text-align: center; }
 
 .googles p {
+  font-size: 40px;
   display: inline-block;
   width: 22%;
   margin: 10px 10px;
-  border: 1px solid #27ae60; }
+  border: 2px solid #e0e0e0; }
 
 form {
   width: 90%;
@@ -74,27 +75,27 @@ form {
   height: 15px;
   margin-right: -4px;
   padding: 5px;
-  background: #ecf0f1;
-  color: #27ae60;
-  border: 1px solid #27ae60; }
+  background: #3498DB;
+  color: #e0e0e0;
+  border: 1px solid #e0e0e0; }
 
 .search:hover {
   border: 1px solid #666; }
 
 .search:focus {
   outline: none;
-  border: 1px solid #27ae60; }
+  border: 1px solid #e0e0e0; }
 
 .go {
   height: 27px;
   width: 40px;
-  background: #ecf0f1;
-  color: #27ae60;
-  border: 1px solid #27ae60; }
+  background: #3498DB;
+  color: #e0e0e0;
+  border: 1px solid #e0e0e0; }
 
 .go:hover {
-  background: #27ae60;
-  color: #ecf0f1;
+  background: #e0e0e0;
+  color: #3498DB;
   cursor: pointer; }
 
 .go:focus {

@@ -32,13 +32,20 @@ BCYAN=$(xrdb -query | grep -i color14: | tail -c 8)
 WHITE=$(xrdb -query | grep -i color7: | tail -c 8)
 BWHITE=$(xrdb -query | grep -i color15: | tail -c 8)
 
+OTHER0=$(xrdb -query | grep -i color16: | tail -c 8)
+OTHER1=$(xrdb -query | grep -i color17: | tail -c 8)
+OTHER2=$(xrdb -query | grep -i color18: | tail -c 8)
+OTHER3=$(xrdb -query | grep -i color19: | tail -c 8)
+OTHER4=$(xrdb -query | grep -i color20: | tail -c 8)
+OTHER5=$(xrdb -query | grep -i color21: | tail -c 8)
+
 # Bar colors
 BAR_BG=${BG}
 BAR_FG=${FG}
-FOC_FG=${BG}
-FOC_BG=${WHITE}
-ACT_FG=${BBLUE}
-ACT_BG=${BG}
+FOC_FG=${WHITE}
+FOC_BG=${BBLUE}
+ACT_FG=${BG}
+ACT_BG=${WHITE}
 MUSIC_FG=${WHITE}
 MUSIC_BG=${BBLUE}
 DATE_FG=${FG}
@@ -53,7 +60,7 @@ VOL_ICON_FG=${DATE_ICON_FG}
 WIFI_FG=${DATE_FG}
 WIFI_BG=${DATE_BG}
 WIFI_ICON_FG=${DATE_ICON_FG}
-UNDERLINE=${BBLUE}
+UNDERLINE=${OTHER3}
 
 # Icons
 if [ "$POWERLINE_MODE" = true ]; then

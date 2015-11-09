@@ -192,6 +192,7 @@ bar {
 
 assign [class="chromium"] $WS2
 assign [class="Firefox"] $WS2
+assign [class="jetbrains-idea-ce"] $WS3
 assign [class="Spotify"] $WS4
 assign [class="Thunar"] $WS5
 assign [class="MPlayer"] $WS7
@@ -218,7 +219,7 @@ mode "$mode_system" {
 gaps inner 10
 gaps outer 10
 
-workspace $WS6 gaps inner 0
+# workspace $WS6 gaps inner 0
 
 bindsym $mod+Pause mode "$mode_system"
 

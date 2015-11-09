@@ -6,7 +6,7 @@ call vundle#rc()
 Bundle 'gmarik/Vundle.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'chriskempson/base16-vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'chrisbra/csv.vim'
