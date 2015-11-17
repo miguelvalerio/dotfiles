@@ -32,35 +32,28 @@ BCYAN=$(xrdb -query | grep -i color14: | tail -c 8)
 WHITE=$(xrdb -query | grep -i color7: | tail -c 8)
 BWHITE=$(xrdb -query | grep -i color15: | tail -c 8)
 
-OTHER0=$(xrdb -query | grep -i color16: | tail -c 8)
-OTHER1=$(xrdb -query | grep -i color17: | tail -c 8)
-OTHER2=$(xrdb -query | grep -i color18: | tail -c 8)
-OTHER3=$(xrdb -query | grep -i color19: | tail -c 8)
-OTHER4=$(xrdb -query | grep -i color20: | tail -c 8)
-OTHER5=$(xrdb -query | grep -i color21: | tail -c 8)
-
 # Bar colors
 BAR_BG=${BG}
 BAR_FG=${FG}
 FOC_FG=${WHITE}
-FOC_BG=${BBLUE}
+FOC_BG=${BLUE}
 ACT_FG=${BG}
 ACT_BG=${WHITE}
 MUSIC_FG=${WHITE}
-MUSIC_BG=${BBLUE}
-DATE_FG=${FG}
-DATE_BG=${BAR_BG}
-DATE_ICON_FG=${BBLUE}
+MUSIC_BG=${BLUE}
+DATE_FG=${BG}
+DATE_BG=${WHITE}
+DATE_ICON_FG=${BLUE}
 TIME_FG=${DATE_FG}
-TIME_BG=${BAR_BG}
+TIME_BG=${WHITE}
 TIME_ICON_FG=${DATE_ICON_FG}
 VOL_FG=${DATE_FG}
-VOL_BG=${DATE_BG}
+VOL_BG=${WHITE}
 VOL_ICON_FG=${DATE_ICON_FG}
 WIFI_FG=${DATE_FG}
-WIFI_BG=${DATE_BG}
+WIFI_BG=${BG}
 WIFI_ICON_FG=${DATE_ICON_FG}
-UNDERLINE=${OTHER3}
+UNDERLINE=${BBLACK}
 
 # Icons
 if [ "$POWERLINE_MODE" = true ]; then
@@ -87,6 +80,9 @@ WIFI_ICON=""
 # Fonts
 FONT1="source code pro for powerline:regular:size=9"
 FONT2="Font Awesome:regular:size=10"
+
+FONT1_OFFSET=0
+FONT2_OFFSET=-1
 
 # Wifi interface
 DEVICE=$(iw dev | grep Interface | awk '{print $2}')

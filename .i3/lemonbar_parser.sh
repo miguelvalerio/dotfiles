@@ -39,7 +39,7 @@ while read -r line; do
             time="%{F${TIME_ICON_FG}}%{B${TIME_BG}} ${TIME_ICON} %{F${TIME_FG}}${line#????} "
             ;;
         DATE*)
-            date="%{F${DATE_ICON_FG}}%{B${BAR_BG}} ${CALENDAR_ICON} %{F${DATE_FG}}${line#????} "
+            date="%{F${DATE_ICON_FG}}%{B${DATE_BG}} ${CALENDAR_ICON} %{F${DATE_FG}}${line#????} "
             ;;
         MOD*)
             mode=""
@@ -59,7 +59,7 @@ while read -r line; do
                     FOC*)
                         # [ "${draw}" == "${SEP_R}" ] && fore=${BAR_BG} || fore=${ACT_BG}
                         fore=${BAR_BG}
-                        ws="%{F${fore}}%{B${FOC_BG}}${SEP_R}%{F${FOC_FG}} ${ws_icon}%{F${FOC_BG}}${SEP_R}"
+                        ws="%{F${FOC_FG}}%{B${FOC_BG}}${SEP_R}%{F${FOC_FG}} ${ws_icon}%{F${FOC_BG}}${SEP_R}"
                         [ "$POWERLINE_MODE" = false ] && ws="${ws} "
                         [ "$UNDERLINE_MODE" = true ] && ws="%{+uU${UNDERLINE}}${ws}%{-u}"
                         [ "$CLICK_MODE" = true ] && ws="%{A1:i3-msg workspace back_and_forth:}${ws}%{A}"
@@ -82,7 +82,7 @@ while read -r line; do
     output=""
     for mon in ${!monitors[@]}; do
         [ $mon -eq -1 ] && break
-        output="${output}%{S$mon}}%{l}${monitors[$mon]}${mode}%{R}%{B${BAR_BG}}${SEP_R}%{c}${music}%{r}${vol}${date}${time}"
+        output="${output}%{S$mon}}%{l}${monitors[$mon]}${mode}%{R}%{B${BAR_BG}}${SEP_R}%{c}%{B${BAR_BG}}${music}%{r}${vol}${time}${date}%{B${BAR_BG}}"
     done
     echo "$output"
 done

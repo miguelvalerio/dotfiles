@@ -104,7 +104,7 @@ focus_follows_mouse no
 
 # switch to workspace
 set $WS1 "1-"
-set $WS2 "2-"
+set $WS2 "2-"
 set $WS3 "3-"
 set $WS4 "4-"
 set $WS5 "5-"
@@ -172,9 +172,9 @@ bindsym $mod+r mode "resize"
 
 # class                 border  backgr. text    indicator
 client.focused          #3498DB #3498DB #ffffff #3498DB
-client.focused_inactive #000000 #000000 #ffffff #ffffff
-client.unfocused        #000000 #000000 #ffffff #ffffff
-client.urgent           #000000 #000000 #ffffff #ffffff
+client.focused_inactive #000000 #000000 #ffffff #000000
+client.unfocused        #000000 #000000 #ffffff #000000
+client.urgent           #000000 #000000 #ffffff #000000
 
 hide_edge_borders both
 
@@ -203,7 +203,7 @@ set $Locker i3lock && sleep 1
 
 set $mode_system (l)ock, (h)ibernate, (r)eboot, (S)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/.i3/lock.sh ~/.i3/lock.png, mode "default"
+    bindsym l exec --no-startup-id ~/.i3/lock.sh, mode "default"
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"

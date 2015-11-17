@@ -11,6 +11,8 @@ Bundle 'chriskempson/base16-vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'chrisbra/csv.vim'
 Bundle 'klen/python-mode'
+Bundle 'tpope/vim-markdown'
+Bundle 'suan/vim-instant-markdown'
 filetype plugin indent on
 
 let base16colorspace=256

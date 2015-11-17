@@ -155,7 +155,7 @@ prompt_dir() {
 prompt_virtualenv() {
   local virtualenv_path="$VIRTUAL_ENV"
   if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    prompt_segment blue black "(`basename $virtualenv_path`)"
+    prompt_segment green black "(`basename $virtualenv_path`)"
   fi
 }
 
@@ -165,7 +165,7 @@ prompt_virtualenv() {
 # - are there background jobs?
 prompt_status() {
   local symbols
-  symbols=()
+  symbols=""
   #[[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
@@ -177,8 +177,8 @@ prompt_status() {
 build_prompt() {
   RETVAL=$?
   prompt_status
-  prompt_virtualenv
   prompt_context
+  prompt_virtualenv
   prompt_dir
   prompt_git
   prompt_hg

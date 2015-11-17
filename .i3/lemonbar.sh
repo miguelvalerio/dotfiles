@@ -69,5 +69,5 @@ while :; do
 done > $PANEL_FIFO &
 
 # cat "${PANEL_FIFO}" | $(dirname $0)/lemonbar_parser.sh | lemonbar -g ${BAR_LENGTH}x${BAR_HEIGHT}+${H_GAP}+${V_GAP} -d -f "${FONT1}" -f "${FONT2}"| sh
-cat "${PANEL_FIFO}" | $(dirname $0)/lemonbar_parser.sh | lemonbar -g x${BAR_HEIGHT} -f "${FONT1}" -f "${FONT2}" -u 2 | sh
+cat "${PANEL_FIFO}" | $(dirname $0)/lemonbar_parser.sh | lemonbar -g x${BAR_HEIGHT} -f "${FONT1}" -f "${FONT2}" -u 2 -o "${FONT1_OFFSET}" -o "${FONT2_OFFSET}" | sh
 
