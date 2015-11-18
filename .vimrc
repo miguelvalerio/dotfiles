@@ -3,7 +3,6 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
-Bundle 'gmarik/Vundle.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Valloric/YouCompleteMe'
@@ -12,6 +11,8 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'chrisbra/csv.vim'
 Bundle 'klen/python-mode'
 Bundle 'tpope/vim-markdown'
+Bundle 'gmarik/Vundle.vim'
+Bundle 'tpope/vim-surround'
 Bundle 'suan/vim-instant-markdown'
 filetype plugin indent on
 
