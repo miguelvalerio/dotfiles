@@ -4,6 +4,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 Bundle 'scrooloose/nerdtree'
+Bundle 'rstacruz/sparkup'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'chriskempson/base16-vim'
