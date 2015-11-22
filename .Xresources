@@ -26,10 +26,15 @@ URxvt.font:                     FONT1
 URxvt.boldFont:                 FONT2
 
 ! Rofi
-rofi.opacity:   90
-rofi.width:     50
-rofi.lines:     5
-rofi.font:      Source Code Pro 9
+rofi.opacity:           90
+rofi.width:             100
+rofi.lines:             5
+rofi.font:              Source Code Pro 9
+rofi.separator-style:   none
+rofi.hide-scrollbar:    true
+rofi.padding:           340
+rofi.eh:                2
+rofi.bw:                0
 
 ! Base16 Flat
 ! Scheme: Chris Kempson (http://chriskempson.com)

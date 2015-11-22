@@ -35,6 +35,7 @@ vmap <F12> <ESC>:set hls!<CR>gv
 "CTRLP
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_working_path_mode = 'a'
 
 "No swap files
 set noswapfile

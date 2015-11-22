@@ -81,8 +81,7 @@ while read -r line; do
     esac
     output=""
     for mon in ${!monitors[@]}; do
-        [ $mon -eq -1 ] && break
-        output="${output}%{S$mon}}%{l}${monitors[$mon]}${mode}%{R}%{B${BAR_BG}}${SEP_R}%{c}%{B${BAR_BG}}${music}%{r}${vol}${time}${date}%{B${BAR_BG}}"
+        output="${output}%{S+}}%{l}${monitors[$mon]}${mode}%{R}%{B${BAR_BG}}${SEP_R}%{c}%{B${BAR_BG}}${music}%{r}${vol}${time}${date}%{B${BAR_BG}}"
     done
     echo "$output"
 done
