@@ -3,6 +3,10 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'nathanaelkane/vim-indent-guides'
+Plugin 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdtree'
 Bundle 'rstacruz/sparkup'
 Bundle 'kien/ctrlp.vim'
@@ -26,6 +30,7 @@ set relativenumber
 syntax enable
 set clipboard=unnamed
 let mapleader=","
+set hidden
 
 "Highlights on/off
 map  <F12> :set hls!<CR>
@@ -104,3 +109,9 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
+
+" JS
+let g:javascript_enable_domhtmlcss = 1
+
+" JS-libraries
+let g:used_javascript_libs = 'jquery, react, flux, requirejs'
