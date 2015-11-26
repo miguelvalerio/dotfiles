@@ -13,6 +13,6 @@ for i in {1..17}
 do
     i3-msg 'focus child; resize grow width 10 or 1'
 done
-i3-msg 'focus parent; split v; exec urxvt -hold -e ncmpcpp --screen media_library --config ~/.ncmpcpp/alternative'
+i3-msg 'focus parent; split v; exec urxvt -hold -e ncmpcpp --screen browser --config ~/.ncmpcpp/alternative'
 sleep 0.5
-i3-msg 'workspace 2-'
+i3-msg 'focus child; split h; exec urxvt -hold -e ncmpcpp --screen visualizer --config ~/.ncmpcpp/alternative'
