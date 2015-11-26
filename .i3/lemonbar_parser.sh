@@ -81,7 +81,11 @@ while read -r line; do
     esac
     output=""
     for mon in ${!monitors[@]}; do
-        output="${output}%{S+}}%{l}${monitors[$mon]}${mode}%{R}%{B${BAR_BG}}${SEP_R}%{c}%{B${BAR_BG}}${music}%{r}${vol}${time}${date}%{B${BAR_BG}}"
+        if [ $mon -eq 0 ]; then
+            output="${output}%{S}}%{l}${monitors[$mon]}${mode}%{R}%{B${BAR_BG}}${SEP_R}%{c}%{B${BAR_BG}}${music}%{r}${vol}${time}${date}%{B${BAR_BG}}"
+        else
+            output="${output}%{S+}}%{l}${monitors[$mon]}${mode}%{R}%{B${BAR_BG}}${SEP_R}%{c}%{B${BAR_BG}}${music}%{r}${vol}${time}${date}%{B${BAR_BG}}"
+        fi
     done
     echo "$output"
 done

@@ -3,10 +3,10 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
+Bundle 'mxw/vim-jsx'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'jelera/vim-javascript-syntax'
-Bundle 'nathanaelkane/vim-indent-guides'
-Plugin 'pangloss/vim-javascript'
+Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdtree'
 Bundle 'rstacruz/sparkup'
 Bundle 'kien/ctrlp.vim'
@@ -15,7 +15,6 @@ Bundle 'chriskempson/base16-vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'chrisbra/csv.vim'
 Bundle 'klen/python-mode'
-Bundle 'tpope/vim-markdown'
 Bundle 'gmarik/Vundle.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'suan/vim-instant-markdown'
