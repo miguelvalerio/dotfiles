@@ -230,7 +230,7 @@ exec --no-startup-id compton --config ~/.config/compton.conf
 # exec --no-startup-id chromium
 exec --no-startup-id firefox
 exec --no-startup-id thunar
-exec --no-startup-id feh --bg-scale ~/.wallpapers/wp
+# exec --no-startup-id feh --bg-scale ~/.wallpapers/wp
 exec --no-startup-id ~/.scripts/album_cover.sh
 exec --no-startup-id ~/.scripts/mpd_notification.sh
 exec --no-startup-id ~/.i3/workspace6.sh

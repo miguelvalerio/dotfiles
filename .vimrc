@@ -3,6 +3,7 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
+Bundle 'bling/vim-airline'
 Bundle 'mxw/vim-jsx'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'jelera/vim-javascript-syntax'
@@ -45,9 +46,13 @@ let g:ctrlp_working_path_mode = 'a'
 set noswapfile
 
 "Powerline
-let $PYTHONPATH='/usr/lib/python3.4/site-packages'
+let g:powerline_loaded = 1
+" let $PYTHONPATH='/usr/lib/python3.4/site-packages'
 set laststatus=2
 set formatoptions-=cro
+
+" Airline
+let g:airline_powerline_fonts = 1
 
 "TABS
 set tabstop=4
@@ -89,7 +94,8 @@ let g:pymode_doc_key = 'K'
 
 "Linting
 let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint_checker = "pylint,pep8,pyflakes"
+let g:pymode_lint_ignore = "W0404"
 " Auto check on save
 let g:pymode_lint_write = 1
 
