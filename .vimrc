@@ -3,11 +3,11 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
+Bundle 'scrooloose/syntastic'
 Bundle 'bling/vim-airline'
 Bundle 'mxw/vim-jsx'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'othree/html5.vim'
-Bundle 'jelera/vim-javascript-syntax'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdtree'
 Bundle 'rstacruz/sparkup'
@@ -121,6 +121,11 @@ let g:javascript_enable_domhtmlcss = 1
 
 " JS-libraries
 let g:used_javascript_libs = 'jquery, react, flux, requirejs'
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+let g:syntastic_javascript_checkers = ['eslint']
+
+autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
 
 if has("autocmd")
   filetype plugin indent on
