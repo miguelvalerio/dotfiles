@@ -5,8 +5,8 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 Bundle 'scrooloose/syntastic'
 Bundle 'bling/vim-airline'
-Bundle 'mxw/vim-jsx'
 Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'mxw/vim-jsx'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdtree'
