@@ -17,7 +17,7 @@ while :; do
             done
             prev_symlink=$(realpath /tmp/cover)
         fi
-        convert /tmp/cover -thumbnail 64x64^ -gravity center -extent 64x64 /tmp/thumbnail.png
-        $(dirname $0)/notify-send.sh --replace=100 "$(mpc current --format "%title%")" "$(mpc current --format "%artist%\n%album%")" -i /tmp/thumbnail.png
+        convert /tmp/cover -thumbnail 70x70^ -gravity center -extent 70x70 /tmp/thumbnail.png
+        $(dirname $0)/notify-send.sh --replace=100 "$(mpc current --format "\n%title%")" "$(mpc current --format "\n%artist%\n%album%")\n" -i /tmp/thumbnail.png
     fi
 done

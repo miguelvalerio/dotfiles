@@ -24,7 +24,7 @@ filetype plugin indent on
 
 let base16colorspace=256
 set t_Co=256
-colorscheme base16-flat
+colorscheme base16-codeschool
 set background=dark
 
 set relativenumber
@@ -83,14 +83,14 @@ map <c-h> <c-w>h
 " ]]            Jump on next class or function (normal, visual, operator modes)
 " [M            Jump on previous class or method (normal, visual, operator modes)
 " ]M            Jump on next class or method (normal, visual, operator modes)
-" let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_lookup_project = 1
 let g:pymode_rope = 1
 let g:pymode_rope_completion = 1
 let g:pymode_rope_complete_on_dot = 1
 let g:pymode_rope_completion_bind = '<C-Space>'
 
 " Documentation
-let g:pymode_doc = 1
+let g:pymode_doc = 0
 let g:pymode_doc_key = 'K'
 
 "Linting
@@ -125,7 +125,13 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 let g:syntastic_javascript_checkers = ['eslint']
 
-autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype javascript setlocal ts=2 sw=2 softtabstop=2 expandtab
+
+" PyMode documentation hide after selection
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
 
 if has("autocmd")
   filetype plugin indent on

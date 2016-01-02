@@ -137,6 +137,10 @@ bindsym $mod+Shift+8 move container to workspace number $WS8
 bindsym $mod+Shift+9 move container to workspace number $WS9
 bindsym $mod+Shift+0 move container to workspace number $WS10
 
+# turn off borders
+bindsym $mod+z border pixel 0
+bindsym $mod+x border pixel 5
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -171,12 +175,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  backgr. text    indicator
-client.focused          #3498DB #3498DB #ffffff #3498DB
-client.focused_inactive #000000 #000000 #ffffff #000000
-client.unfocused        #000000 #000000 #ffffff #000000
-client.urgent           #000000 #000000 #ffffff #000000
-
-hide_edge_borders both
+client.focused          #E0E0E0 #E0E0E0 #2C3E50 #E0E0E0
+client.focused_inactive #2C3E50 #2C3E50 #ffffff #2C3E50
+client.unfocused        #2C3E50 #2C3E50 #ffffff #2C3E50
+client.urgent           #2C3E50 #2C3E50 #ffffff #2C3E50
 
 new_window pixel 5
 
@@ -193,11 +195,12 @@ bar {
 assign [class="chromium"] $WS2
 assign [class="Firefox"] $WS2
 assign [class="jetbrains-idea-ce"] $WS3
-assign [class="Spotify"] $WS4
+assign [class="spotify"] $WS4
 assign [class="Thunar"] $WS5
 assign [class="MPlayer"] $WS7
 assign [class="mpv"] $WS7
 assign [class="Transmission-gtk"] $WS8
+assign [class="Steam"] $WS10
 
 set $Locker i3lock && sleep 1
 

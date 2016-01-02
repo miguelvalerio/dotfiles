@@ -84,9 +84,10 @@ man() {
     man "$@"
 }
 
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-flat.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
 export BROWSER="/usr/share/applications/chromium.desktop"
 alias rxvt=urxvt
 export EDITOR=/usr/bin/vim
-
-BASE16_SHELL="$HOME/.config/base16-shell/base16-flat.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
