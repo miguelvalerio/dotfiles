@@ -136,3 +136,7 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
 if has("autocmd")
   filetype plugin indent on
 endif
+
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor = "latex"
+set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after

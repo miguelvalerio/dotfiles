@@ -33,7 +33,7 @@ while read -r line; do
             else
                 vol_icon=${VOL_OFF_ICON}
             fi
-            vol="%{A4:amixer set Master 5%+:}%{A5:amixer set Master 5%-:}%{B${VOL_BG}}%{F${VOL_ICON_FG}} ${vol_icon} %{F${VOL_FG}}${volume}%{A}%{A} "
+            vol="%{A4:amixer set Master 5\%+:}%{A5:amixer set Master 5\%-:}%{B${VOL_BG}}%{F${VOL_ICON_FG}} ${vol_icon} %{F${VOL_FG}}${volume}%{A}%{A} "
             ;;
         TIME*)
             time="%{F${TIME_ICON_FG}}%{B${TIME_BG}} ${TIME_ICON} %{F${TIME_FG}}${line#????} "
