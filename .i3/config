@@ -232,7 +232,7 @@ exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id compton --config ~/.config/compton.conf
 # exec --no-startup-id chromium
 exec --no-startup-id thunar
-exec --no-startup-id feh --bg-center ~/.wallpapers/leviathan_black.jpg --image-bg black
+exec --no-startup-id feh --bg-center ~/.wallpapers/leviathan.jpg --image-bg white
 exec --no-startup-id ~/.scripts/album_cover.sh
 exec --no-startup-id ~/.scripts/mpd_notification.sh
 # exec --no-startup-id ~/.i3/workspace6.sh

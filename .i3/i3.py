@@ -427,9 +427,11 @@ def subscribe(event_type, event=None, callback=None):
     """
     if not callback:
         def callback(event, data, subscription):
-            print('changed:', event['change'])
+            # print('changed:', event['change'])
             if data:
-                print('data:\n', data)
+                # print('data:\n', data)
+                print(data)
+                sys.stdout.flush()
 
     socket = default_socket()
     subscription = Subscription(callback, event_type, event, data_socket=socket)

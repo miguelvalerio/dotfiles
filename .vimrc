@@ -24,7 +24,7 @@ filetype plugin indent on
 
 let base16colorspace=256
 set t_Co=256
-colorscheme base16-codeschool
+colorscheme base16-google
 set background=dark
 
 set relativenumber

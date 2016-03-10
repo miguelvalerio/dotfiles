@@ -90,3 +90,5 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-flat.dark.sh"
 
 alias rxvt=urxvt
 export EDITOR=/usr/bin/vim
+export QT_STYLE_OVERRIDE=GTK+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -1,8 +1,7 @@
 #!/bin/bash
 
-POWERLINE_MODE=false
 CLICK_MODE=true
-UNDERLINE_MODE=true
+UNDERLINE_MODE=false
 # Colors
 
 BG=$(xrdb -query | grep -i background: | tail -c 8)
@@ -33,10 +32,11 @@ WHITE=$(xrdb -query | grep -i color7: | tail -c 8)
 BWHITE=$(xrdb -query | grep -i color15: | tail -c 8)
 
 # Bar colors
-BAR_BG=${BG}
+BAR_BG=${BLUE}
 BAR_FG=${FG}
-FOC_FG=${BGREEN}
-FOC_BG=${WHITE}
+# FOC_FG=${BGREEN}
+FOC_FG=${WHITE}
+FOC_BG=${BG}
 ACT_FG=${BG}
 ACT_BG=${WHITE}
 MOD_FG=${WHITE}
@@ -78,6 +78,9 @@ VOL_UP_ICON=""
 VOL_DOWN_ICON=""
 VOL_OFF_ICON=""
 WIFI_ICON=""
+
+DATE_TIMER=1
+CLOCK_TIMER=1
 
 # Fonts
 FONT1="source code pro for powerline:regular:size=9"
