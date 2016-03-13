@@ -141,6 +141,10 @@ bindsym $mod+Shift+0 move container to workspace number $WS10
 bindsym $mod+z border pixel 0
 bindsym $mod+x border pixel 5
 
+# media
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%- #decrease sound volume
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -174,15 +178,15 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# class                 border  backgr. text    indicator
-client.focused          #E0E0E0 #E0E0E0 #2C3E50 #E0E0E0
-client.focused_inactive #2C3E50 #2C3E50 #ffffff #2C3E50
-client.unfocused        #2C3E50 #2C3E50 #ffffff #2C3E50
-client.urgent           #2C3E50 #2C3E50 #ffffff #2C3E50
+# class                 border     background text       indicator
+client.focused          #3498DB #3498DB #e0e0e0 #3498DB
+client.focused_inactive #2C3E50 #2C3E50 #7F8C8D #2C3E50
+client.unfocused        #2C3E50 #2C3E50 #7F8C8D #2C3E50
+client.urgent           #2C3E50 #2C3E50 #7F8C8D #2C3E50
 
 new_window pixel 5
 
-for_window [class="chromium"] border none
+# for_window [class="chromium"] border none
 
 workspace_auto_back_and_forth yes
 
@@ -202,20 +206,7 @@ assign [class="mpv"] $WS7
 assign [class="Transmission-gtk"] $WS8
 assign [class="Steam"] $WS10
 
-set $Locker i3lock && sleep 1
-
-set $mode_system (l), (h), (r), (S)
-mode "$mode_system" {
-    bindsym l exec --no-startup-id cd ~/.i3/i3lock-fancy && ./lock, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+bindsym $mod+Pause exec ~/.i3/power_screen.sh
 
 # gaps
 
@@ -224,15 +215,14 @@ gaps outer 10
 
 # workspace $WS6 gaps inner 0
 
-bindsym $mod+Pause mode "$mode_system"
-
 # exec --no-startup-id conky -c ~/.config/lemonbar_conky
 exec --no-startup-id xflux -l 40 -g 8
 exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id compton --config ~/.config/compton.conf
 # exec --no-startup-id chromium
 exec --no-startup-id thunar
-exec --no-startup-id feh --bg-center ~/.wallpapers/leviathan.jpg --image-bg white
+exec --no-startup-id feh --bg-fill ~/.wallpapers/risk.jpg
+# exec --no-startup-id feh --bg-center ~/.wallpapers/leviathan.jpg --image-bg white
 exec --no-startup-id ~/.scripts/album_cover.sh
 exec --no-startup-id ~/.scripts/mpd_notification.sh
 # exec --no-startup-id ~/.i3/workspace6.sh

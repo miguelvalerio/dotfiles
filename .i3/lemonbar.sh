@@ -9,6 +9,27 @@ fi
 
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
+prompt_segment() {
+    if [[ "$1" == "LEFT" ]]; then
+        sep="${SEP_L}"
+        sep_l="${SEP_L_L}"
+    else
+        sep="${SEP_R}"
+        sep_l="${SEP_R_L}"
+    fi
+    if [[ "$POWERLINE_MODE" = true ]]; then
+        sep="%{T3}"${sep}"%{T-}"
+        sep_l="%{T3}"${sep_l}"%{T-}"
+    fi
+    if [[ $2 != 'NONE' && $2 != $3 ]]; then
+        [[ "$1" == "RIGHT" ]] && echo -e "%{B$3}%{F$2}${sep}%{F$4}%{B$3}" || echo -e "%{B$2}%{F$3}${sep}%{F$4}%{B$3}"
+    elif [[ $2 != 'NONE' && $2 == $3 ]]; then
+        echo -e "%{B$3}%{F$4}${sep_l}"
+    else
+        echo -e "%{B$3}%{F$4}"
+    fi
+}
+
 volume() {
     while read -r subscribe; do
         case "${subscribe}" in
@@ -21,7 +42,7 @@ volume() {
                 else
                     vol_icon=${VOL_OFF_ICON}
                 fi
-                echo -e "VOL%{A4:amixer set Master 5\%+:}%{A5:amixer set Master 5\%-:}%{B${VOL_BG}}%{F${VOL_ICON_FG}} ${vol_icon} %{F${VOL_FG}}${vol}%{A}%{A} "
+                echo -e "VOL$(prompt_segment "LEFT" ${BAR_BG} ${VOL_BG} ${VOL_FG}) %{A4:amixer set Master 5%+:}%{A5:amixer set Master 5%-:}${vol_icon} ${vol}%{A}%{A} "
                 ;;
         esac
     done < <(echo "sink" && pactl subscribe)
@@ -29,25 +50,25 @@ volume() {
 
 calendar() {
     while :; do
-        cal=$(date +'%A, %d %B %Y')
-        echo -e "DATE%{F${DATE_ICON_FG}}%{B${DATE_BG}} ${CALENDAR_ICON} %{F${DATE_FG}}${cal} "
+        cal=$(date +'%a, %d %b %Y')
+        echo -e "DATE$(prompt_segment "LEFT" ${TIME_BG} ${DATE_BG} ${DATE_FG}) ${CALENDAR_ICON} ${cal} "
         sleep $DATE_TIMER
     done
 }
 
 clock() {
     while :; do
-        time="$(date +"%R")"
-        echo -e "CLOCK%{F${TIME_ICON_FG}}%{B${TIME_BG}} ${TIME_ICON} %{F${TIME_FG}}${time} "
+        time="$(date +"%H:%M")"
+        echo -e "CLOCK$(prompt_segment "LEFT" ${VOL_BG} ${TIME_BG} ${TIME_FG}) ${TIME_ICON} ${time} "
         sleep $CLOCK_TIMER
     done
 }
 
 song_cycle() {
     while :; do
-        contents=$(mpc current --format "%artist% - %title%")
+        contents="$(mpc current --format "%artist% - %title%")"
         if [ "$prev_contents" != "$contents" ]; then
-            prev_contents=${contents}
+            prev_contents="${contents}"
             count=0
             increment=1
             timer=0
@@ -74,7 +95,7 @@ song_cycle() {
                 [ "${stop}" -eq 1 ] && count=$((count+increment))
             fi
         else
-            song=${contents}
+            song="${contents}"
         fi
         echo -e "$song"
         sleep 0.25
@@ -84,7 +105,7 @@ song_cycle() {
 music() {
     while read -r dummy; do
         { 
-            while IFS='' read -r song; do
+            while IFS= read -r song; do
                 status=$(mpc | head -2 | tail -1 | awk '{print $1;}' | tr -d '[]')
                 case $status in
                     "playing")
@@ -98,37 +119,50 @@ music() {
                         ;;
                 esac
                 time="[$(mpc | awk 'NR==2 {print $3}')]"
-                echo -e "MUSIC%{A4:mpc next:}%{A5:mpc prev:}%{A:mpc toggle:}%{B${MUSIC_BG}}%{F${BAR_BG}}${SEP_R} %{F${MUSIC_FG}}%{B${MUSIC_BG}}${song} $time %{F${BAR_BG}}%{B${MUSIC_BG}}${SEP_L}%{A}%{A}%{A}"
+                echo -e "MUSIC$(prompt_segment "RIGHT" ${BAR_BG} ${MUSIC_BG} ${MUSIC_FG}) %{A4:mpc next:}%{A5:mpc prev:}%{A1:mpc toggle:}${song} ${time}%{A}%{A}%{A} $(prompt_segment "LEFT" ${MUSIC_BG} ${BAR_BG} ${BAR_FG})"
             done
         } < <(song_cycle)
     done < <(echo "dummy" && mpc idleloop)
 }
 
+power_menu() {
+    while :; do
+        echo -e "POWER$(prompt_segment "LEFT" ${DATE_BG} ${POWER_BG} ${POWER_FG}) %{A1:$(dirname $0)/power_screen.sh:}${POWER_ICON}%{A} "
+        sleep 30
+    done
+}
+
 workspaces() {
+    [[ "$POWERLINE_MODE" = false ]] && ws_space="  " || ws_space=" "
     while read -r ws ; do
+        prev_ws_bg=${BAR_BG}
         wsp=
         set -- ${ws}
         while [ $# -gt 0 ]; do
             IFS=, read -ra workspace <<< "$1"
             IFS=- read -ra ws_name <<< "${workspace[0]}"
+            [[ "$wsp" == "" ]] && space="" || space=" "
             if [ "${workspace[1]}" = true ]; then
-                this_ws="%{B${FOC_BG}}%{F${FOC_FG}}  ${ws_name[1]}  "
+                this_ws="${space}$(prompt_segment "RIGHT" ${prev_ws_bg} ${FOC_BG} ${FOC_FG})%{A1:i3-msg workspace back_and_forth:}  ${ws_name[1]}${ws_space}%{A}"
                 [ "$UNDERLINE_MODE" = true ] && this_ws="%{+uU${UNDERLINE}}${this_ws}%{-u}"
                 wsp="${wsp}${this_ws}"
+                prev_ws_bg=${FOC_BG}
             else
-                this_ws="%{B${ACT_BG}}%{F${ACT_FG}}  ${ws_name[1]}  "
-                this_ws="%{A1:i3-msg workspace ${workspace[0]}:}${this_ws}%{A}"
+                this_ws="${space}$(prompt_segment "RIGHT" ${prev_ws_bg} ${ACT_BG} ${ACT_FG})%{A1:i3-msg workspace ${workspace[0]}:}  ${ws_name[1]}${ws_space}%{A}"
                 wsp="${wsp}${this_ws}"
+                prev_ws_bg=${ACT_BG}
             fi
             shift
         done
+        wsp="${wsp} $(prompt_segment "RIGHT" ${prev_ws_bg} ${BAR_BG} ${BAR_FG})"
         echo "WS${wsp}"
         #process substitution
     done < <(echo $(python2.7 $(dirname $0)/ipc.py -t get_workspaces | sed "s/u'/'/g" | sed -u -e "s/'/\"/g" -e "s/False/false/g" -e "s/True/true/g" | jq --unbuffered -r 'def s(s): s | tostring; map(.name + "," + s(.focused) + " ") | reduce .[] as $item (""; . + $item)') && python $(dirname $0)/ipc.py -t subscribe workspace | sed -u -e "s/'/\"/g" -e "s/False/false/g" -e "s/True/true/g" | jq --unbuffered -r 'def s(s): s | tostring; map(.name + "," + s(.focused) + " ") | reduce .[] as $item (""; . + $item)')
 }
 
+
 {
-    >(calendar) >(volume) >(clock) >(music) >(workspaces) | while IFS= read -r line; do
+    >(calendar) >(volume) >(clock) >(music) >(workspaces) >(power_menu) | while IFS= read -r line; do
     case "$line" in
         WS*)
             lemon_ws=${line#??}
@@ -148,8 +182,11 @@ workspaces() {
         CLOCK*)
             lemon_clock=${line#?????}
             ;;
+        POWER*)
+            lemon_power=${line#?????}
+            ;;
     esac
-    bar="%{B${BAR_BG}}%{l}${lemon_ws}%{B$BAR_BG}%{F$BAR_FG}%{c}$lemon_music%{r}${lemon_vol}${lemon_clock}${lemon_date}%{B${BAR_BG}}"
+    bar="%{B${BAR_BG}}%{l}${lemon_ws}%{B$BAR_BG}%{F$BAR_FG}%{c}${lemon_music}%{r}${lemon_vol}${lemon_clock}${lemon_date}${lemon_power}%{B${BAR_BG}}$(prompt_segment "LEFT" ${POWER_BG} ${BAR_BG} ${BAR_FG})"
     echo "${bar}"
 done
-} | lemonbar -g x${BAR_HEIGHT} -f "${FONT1}" -f "${FONT2}" -u 2 -o "${FONT1_OFFSET}" -o "${FONT2_OFFSET}" -a 100 | sh
+} | lemonbar -g x${BAR_HEIGHT} -f "${FONT1}" -f "${FONT2}" -f "${FONT3}" -u 2 -o "${FONT1_OFFSET}" -o "${FONT2_OFFSET}" -o "${FONT3_OFFSET}"  -a 400 | sh

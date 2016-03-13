@@ -20,11 +20,12 @@ Bundle 'klen/python-mode'
 Bundle 'gmarik/Vundle.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'suan/vim-instant-markdown'
+Bundle 'nanotech/jellybeans.vim'
 filetype plugin indent on
 
 let base16colorspace=256
 set t_Co=256
-colorscheme base16-google
+colorscheme base16-flat
 set background=dark
 
 set relativenumber

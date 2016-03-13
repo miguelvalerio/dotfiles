@@ -2,6 +2,7 @@
 
 CLICK_MODE=true
 UNDERLINE_MODE=false
+POWERLINE_MODE=true
 # Colors
 
 BG=$(xrdb -query | grep -i background: | tail -c 8)
@@ -33,28 +34,27 @@ BWHITE=$(xrdb -query | grep -i color15: | tail -c 8)
 
 # Bar colors
 BAR_BG=${BLUE}
-BAR_FG=${FG}
+BAR_FG=${BG}
 # FOC_FG=${BGREEN}
-FOC_FG=${WHITE}
-FOC_BG=${BG}
-ACT_FG=${BG}
-ACT_BG=${WHITE}
+FOC_FG=${BLUE}
+FOC_BG=${WHITE}
+ACT_FG=${WHITE}
+ACT_BG=${BG}
 MOD_FG=${WHITE}
 MOD_BG=${MAGENTA}
-MUSIC_FG=${WHITE}
-MUSIC_BG=${BLUE}
-DATE_FG=${BG}
-DATE_BG=${WHITE}
+MUSIC_FG=${BG}
+MUSIC_BG=${WHITE}
+DATE_FG=${WHITE}
+DATE_BG=${BG}
 DATE_ICON_FG=${BG}
-TIME_FG=${DATE_FG}
-TIME_BG=${WHITE}
+TIME_FG=${WHITE}
+TIME_BG=${BG}
 TIME_ICON_FG=${DATE_ICON_FG}
-VOL_FG=${DATE_FG}
-VOL_BG=${WHITE}
+VOL_FG=${WHITE}
+VOL_BG=${BG}
 VOL_ICON_FG=${DATE_ICON_FG}
-WIFI_FG=${DATE_FG}
-WIFI_BG=${BG}
-WIFI_ICON_FG=${DATE_ICON_FG}
+POWER_FG=${BLUE}
+POWER_BG=${WHITE}
 UNDERLINE=${BG}
 
 # Icons
@@ -78,6 +78,7 @@ VOL_UP_ICON=""
 VOL_DOWN_ICON=""
 VOL_OFF_ICON=""
 WIFI_ICON=""
+POWER_ICON=""
 
 DATE_TIMER=1
 CLOCK_TIMER=1
@@ -85,9 +86,11 @@ CLOCK_TIMER=1
 # Fonts
 FONT1="source code pro for powerline:regular:size=9"
 FONT2="Font Awesome:regular:size=10"
+FONT3="source code pro for powerline:regular:size=12"
 
-FONT1_OFFSET=0
-FONT2_OFFSET=-1
+FONT1_OFFSET=-3
+FONT2_OFFSET=-4
+FONT3_OFFSET=0
 
 # Wifi interface
 DEVICE=$(iw dev | grep Interface | awk '{print $2}')
