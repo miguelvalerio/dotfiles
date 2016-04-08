@@ -209,9 +209,9 @@ assign [class="Steam"] $WS10
 bindsym $mod+Pause exec ~/.i3/power_screen.sh
 
 # gaps
-
 gaps inner 10
 gaps outer 10
+
 
 # workspace $WS6 gaps inner 0
 

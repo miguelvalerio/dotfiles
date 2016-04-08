@@ -4,7 +4,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 Bundle 'scrooloose/syntastic'
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'mxw/vim-jsx'
 Bundle 'othree/html5.vim'
@@ -15,17 +15,21 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'chriskempson/base16-vim'
 Bundle 'Raimondi/delimitMate'
-Bundle 'chrisbra/csv.vim'
 Bundle 'klen/python-mode'
 Bundle 'gmarik/Vundle.vim'
 Bundle 'tpope/vim-surround'
-Bundle 'suan/vim-instant-markdown'
+Bundle 'vim-airline/vim-airline-themes'
+Bundle 'majutsushi/tagbar'
+Bundle 'NLKNguyen/papercolor-theme'
+Bundle 'joshdick/onedark.vim'
 Bundle 'nanotech/jellybeans.vim'
+Bundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Bundle 'morhetz/gruvbox'
+Bundle 'wellle/targets.vim'
 filetype plugin indent on
 
-let base16colorspace=256
 set t_Co=256
-colorscheme base16-flat
+color gruvbox
 set background=dark
 
 set relativenumber
@@ -33,6 +37,10 @@ syntax enable
 set clipboard=unnamed
 let mapleader=","
 set hidden
+
+nnoremap H ^
+nnoremap L g_
+nnoremap Y y$
 
 "Highlights on/off
 map  <F12> :set hls!<CR>
@@ -65,6 +73,13 @@ set softtabstop=4
 "NerdTREE
 map <F2> :NERDTreeToggle<CR>
 
+" Tagbar
+map <F3> :TagbarToggle<CR>
+
+" YCM
+let g:ycm_python_binary_path = '/usr/bin/python3.5'
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
 "Buffers movement
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -84,14 +99,14 @@ map <c-h> <c-w>h
 " ]]            Jump on next class or function (normal, visual, operator modes)
 " [M            Jump on previous class or method (normal, visual, operator modes)
 " ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope_lookup_project = 1
-let g:pymode_rope = 1
-let g:pymode_rope_completion = 1
-let g:pymode_rope_complete_on_dot = 1
-let g:pymode_rope_completion_bind = '<C-Space>'
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope = 0
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_completion_bind = '<C-z>'
 
 " Documentation
-let g:pymode_doc = 0
+let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 
 "Linting
@@ -129,8 +144,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 autocmd Filetype javascript setlocal ts=2 sw=2 softtabstop=2 expandtab
 
 " PyMode documentation hide after selection
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
 
@@ -141,3 +156,7 @@ endif
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+
+" sessions
+set ssop-=options    " do not store global and local values in a session
+set ssop-=folds      " do not store folds
