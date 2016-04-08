@@ -1,6 +1,3 @@
 [submodule ".i3/i3lock-fancy"]
 	path = .i3/i3lock-fancy
 	url = https://github.com/meskarune/i3lock-fancy
-[submodule ".prezto"]
-	path = .prezto
-	url = https://github.com/miguelvalerio/prezto.git
