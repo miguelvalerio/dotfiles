@@ -41,6 +41,7 @@ set hidden
 nnoremap H ^
 nnoremap L g_
 nnoremap Y y$
+nnoremap gp `[v`]
 
 "Highlights on/off
 map  <F12> :set hls!<CR>

@@ -2,7 +2,7 @@
 
 CLICK_MODE=true
 UNDERLINE_MODE=false
-POWERLINE_MODE=true
+POWERLINE_MODE=false
 # Colors
 
 BG=$(xrdb -query | grep -i background: | tail -c 8)
