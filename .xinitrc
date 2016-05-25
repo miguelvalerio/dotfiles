@@ -33,6 +33,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 xinput set-prop "Razer  Razer Abyssus" "libinput Accel Speed" -1 &
+urxvtd -q -o -f
+setxkbmap -option "caps:swapescape"
 
 #twm &
 #xclock -geometry 50x50-1+1 &

@@ -178,11 +178,28 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# class                 border     background text       indicator
-client.focused          #3498DB #3498DB #e0e0e0 #3498DB
-client.focused_inactive #2C3E50 #2C3E50 #7F8C8D #2C3E50
-client.unfocused        #2C3E50 #2C3E50 #7F8C8D #2C3E50
-client.urgent           #2C3E50 #2C3E50 #7F8C8D #2C3E50
+set_from_resource $black color0 #FF0000
+set_from_resource $red color1 #FF0000
+set_from_resource $green color2 #FF0000
+set_from_resource $yellow color3 #FF0000
+set_from_resource $blue color4 #FF0000
+set_from_resource $magenta color5 #FF0000
+set_from_resource $cyan color6 #FF0000
+set_from_resource $white color7 #FF0000
+set_from_resource $bblack color8 #FF0000
+set_from_resource $bred color9 #FF0000
+set_from_resource $bgreen color10 #FF0000
+set_from_resource $byellow color11 #FF0000
+set_from_resource $bblue color12 #FF0000
+set_from_resource $bmagenta color13 #FF0000
+set_from_resource $bcyan color14 #FF0000
+set_from_resource $bwhite color15 #FF0000
+
+# class                 border  background  text    indicator   child_border
+client.focused          $blue   $blue       $bwhite $blue   
+client.focused_inactive $black  $black      $bwhite $black 
+client.unfocused        $black  $black      $bwhite $black
+client.urgent           $black  $black      $bwhite $black
 
 new_window pixel 5
 

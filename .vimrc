@@ -20,10 +20,6 @@ Bundle 'gmarik/Vundle.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-airline/vim-airline-themes'
 Bundle 'majutsushi/tagbar'
-Bundle 'NLKNguyen/papercolor-theme'
-Bundle 'joshdick/onedark.vim'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Bundle 'morhetz/gruvbox'
 Bundle 'wellle/targets.vim'
 filetype plugin indent on
@@ -52,6 +48,7 @@ vmap <F12> <ESC>:set hls!<CR>gv
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_working_path_mode = 'a'
+nnoremap <leader>. :CtrlPTag<CR>
 
 "No swap files
 set noswapfile
@@ -65,6 +62,10 @@ set formatoptions-=cro
 " Airline
 let g:airline_powerline_fonts = 1
 
+" tags
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_ctags_bin = '/usr/bin/ctags'
+
 "TABS
 set tabstop=4
 set expandtab
@@ -74,11 +75,9 @@ set softtabstop=4
 "NerdTREE
 map <F2> :NERDTreeToggle<CR>
 
-" Tagbar
-map <F3> :TagbarToggle<CR>
-
 " YCM
 let g:ycm_python_binary_path = '/usr/bin/python3.5'
+let g:ycm_server_python_interpreter = '/usr/bin/python3.5'
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 "Buffers movement
@@ -133,11 +132,12 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 " Don't autofold code
 let g:pymode_folding = 0
 
-" JS
+" JS vim-javascript
 let g:javascript_enable_domhtmlcss = 1
 
 " JS-libraries
 let g:used_javascript_libs = 'jquery, react, flux, requirejs'
+" vim-jsx
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 let g:syntastic_javascript_checkers = ['eslint']
@@ -155,7 +155,11 @@ if has("autocmd")
 endif
 
 set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
+let g:tex_flavor = 'latex'
+let g:tex_fast = "cmMprs"
+let g:tex_conceal = ""
+" let g:tex_fold_enabled = 0
+let g:tex_comment_nospell = 1
 set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 
 " sessions

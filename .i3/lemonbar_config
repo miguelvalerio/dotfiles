@@ -33,17 +33,17 @@ WHITE=$(xrdb -query | grep -i color7: | tail -c 8)
 BWHITE=$(xrdb -query | grep -i color15: | tail -c 8)
 
 # Bar colors
-BAR_BG=${BLUE}
+BAR_BG="00${WHITE}"
 BAR_FG=${BG}
 # FOC_FG=${BGREEN}
 FOC_FG=${BLUE}
-FOC_BG=${WHITE}
-ACT_FG=${WHITE}
+FOC_BG=${BWHITE}
+ACT_FG=${BWHITE}
 ACT_BG=${BG}
-MOD_FG=${WHITE}
+MOD_FG=${BWHITE}
 MOD_BG=${MAGENTA}
 MUSIC_FG=${BG}
-MUSIC_BG=${WHITE}
+MUSIC_BG=${BWHITE}
 DATE_FG=${WHITE}
 DATE_BG=${BG}
 DATE_ICON_FG=${BG}
@@ -54,7 +54,7 @@ VOL_FG=${WHITE}
 VOL_BG=${BG}
 VOL_ICON_FG=${DATE_ICON_FG}
 POWER_FG=${BLUE}
-POWER_BG=${WHITE}
+POWER_BG=${BWHITE}
 UNDERLINE=${BG}
 
 # Icons

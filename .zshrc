@@ -85,13 +85,10 @@ man() {
 }
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-flat.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# BASE16_SHELL="$HOME/.config/base16-shell/base16-flat.dark.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 alias rxvt=urxvt
-export EDITOR=/usr/bin/vim
-export QT_STYLE_OVERRIDE=GTK+
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export WORKON_HOME=~/.virtualenvs
 VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
@@ -110,3 +107,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+#
+export EDITOR=/usr/bin/vim
+export SUDO_EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+export QT_STYLE_OVERRIDE=GTK+
+
+# command fortune -a | fmt -80 -s | $(shuf -n 1 -e cowsay cowthink) -$(shuf -n 1 -e b d g p s t w y) -f $(shuf -n 1 -e $(cowsay -l | tail -n +2)) -n

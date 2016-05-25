@@ -1,4 +1,6 @@
-#include ".Xresources.d/base16-xresources/base16-flat.dark.xresources"
+!#include ".Xresources.d/base16-xresources/base16-flat.dark.xresources"
+#include ".Xresources.d/gruvbox-contrib/urxvt256/gruvbox-urxvt256.xresources"
+#include ".Xresources.d/gruvbox-contrib/xresources/gruvbox-dark.xresources"
 
 
 #define FONT1 xft:source code pro for powerline:regular:pixelsize=13:antialias=true:hinting=true, xft:Meslo\ LG\ M\ for\ Powerline:pixelsize=15, xft:Font Awesome:regular:pixelsize=13:antialias=true:hinting=true
@@ -9,16 +11,16 @@ Xft.dpi:                96
 Xft.antialias:          1
 Xft.autohint:           0
 Xft.hinting:            1
-Xft.hintstyle:  hintfull
-Xft.lcdfilter:  lcddefault
-Xft.rgba:       rgb
+Xft.hintstyle:          hintfull
+Xft.lcdfilter:          lcddefault
+Xft.rgba:               rgb
 
 !URxvt settings
 URxvt.internalBorder:           10
 URxvt.buffered:                 false
 URxvt.saveLines:                12000
 URxvt.scrollBar:                false
-URxvt.depth:                    32
+URxvt.depth:                    0
 URxvt.perl-ext-common:          vtwheel,default,clipboard,matcher,resize-font
 URxvt.url-launcher:             /usr/bin/xdg-open
 URxvt.matcher.button:           1
