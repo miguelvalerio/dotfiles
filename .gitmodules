@@ -4,3 +4,6 @@
 [submodule ".zprezto"]
 	path = .zprezto
 	url = https://github.com/miguelvalerio/prezto.git
+[submodule ".Xresources.d/gruvbox-contrib"]
+	path = .Xresources.d/gruvbox-contrib
+	url = https://github.com/morhetz/gruvbox-contrib
