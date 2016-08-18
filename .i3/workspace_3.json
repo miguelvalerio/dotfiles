@@ -1,0 +1,100 @@
+// vim:ts=4:sw=4:et
+{
+    // tabbed split container with 4 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "tabbed",
+    "percent": null,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 452,
+               "width": 660,
+               "x": 0,
+               "y": 0
+            },
+            "name": "urxvt",
+            "percent": 0.25,
+            "swallows": [
+               {
+               // "class": "^URxvt$",
+               // "instance": "^urxvt$",
+               // "title": "^urxvt$",
+               // "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 452,
+               "width": 660,
+               "x": 0,
+               "y": 0
+            },
+            "name": "serializers.py (~/tese/dicoogle-business-intelligence/DicoogleBI_django/DicoogleBI) ((2) of 2) - VIM",
+            "percent": 0.25,
+            "swallows": [
+               {
+               // "class": "^URxvt$",
+               // "instance": "^urxvt$",
+               // "title": "^serializers\\.py\\ \\(\\~\\/tese\\/dicoogle\\-business\\-intelligence\\/DicoogleBI_django\\/DicoogleBI\\)\\ \\(\\(2\\)\\ of\\ 2\\)\\ \\-\\ VIM$",
+               // "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 452,
+               "width": 660,
+               "x": 0,
+               "y": 0
+            },
+            "name": "urxvt",
+            "percent": 0.25,
+            "swallows": [
+               {
+               // "class": "^URxvt$",
+               // "instance": "^urxvt$",
+               // "title": "^urxvt$",
+               // "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 452,
+               "width": 660,
+               "x": 0,
+               "y": 0
+            },
+            "name": "urxvt",
+            "percent": 0.25,
+            "swallows": [
+               {
+               // "class": "^URxvt$",
+               // "instance": "^urxvt$",
+               // "title": "^urxvt$",
+               // "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

@@ -111,6 +111,6 @@ fi
 export EDITOR=/usr/bin/vim
 export SUDO_EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
-export QT_STYLE_OVERRIDE=GTK+
+# export QT_STYLE_OVERRIDE=GTK+
 
 # command fortune -a | fmt -80 -s | $(shuf -n 1 -e cowsay cowthink) -$(shuf -n 1 -e b d g p s t w y) -f $(shuf -n 1 -e $(cowsay -l | tail -n +2)) -n
