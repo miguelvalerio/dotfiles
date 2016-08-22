@@ -6,7 +6,7 @@ case "$option" in
         poweroff
         ;;
     "lock")
-        cd $(dirname $0)/i3lock-fancy && ./lock
+        ./$(dirname $0)/lock.sh
         ;;
     "reboot")
         reboot
