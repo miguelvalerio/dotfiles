@@ -55,6 +55,8 @@
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.xrender=true'
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -89,6 +91,7 @@ man() {
 # [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 alias rxvt=urxvt
+alias ssh="TERM='xterm' /usr/bin/ssh"
 
 export WORKON_HOME=~/.virtualenvs
 VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
@@ -112,5 +115,6 @@ export EDITOR=/usr/bin/vim
 export SUDO_EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 # export QT_STYLE_OVERRIDE=GTK+
-
+#
+# fish && exit
 # command fortune -a | fmt -80 -s | $(shuf -n 1 -e cowsay cowthink) -$(shuf -n 1 -e b d g p s t w y) -f $(shuf -n 1 -e $(cowsay -l | tail -n +2)) -n

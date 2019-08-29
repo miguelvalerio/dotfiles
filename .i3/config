@@ -18,7 +18,7 @@ set $mod Mod4
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-font pango:FontAwesome, Source Code Pro 9
+font pango:Font Awesome, Source Code Pro 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -73,6 +73,9 @@ bindsym $mod+Control+j move workspace to output down
 bindsym $mod+Control+k move workspace to output up
 bindsym $mod+Control+l move workspace to output right
 
+# lock
+bindsym $mod+mod1+l exec --no-startup-id ~/betterlockscreen --lock -u ~/.wallpapers/risk.jpg
+
 # split in horizontal orientation
 bindsym $mod+b split h
 
@@ -103,16 +106,16 @@ bindsym $mod+c focus child
 focus_follows_mouse no
 
 # switch to workspace
-set $WS1 "1-"
-set $WS2 "2-"
-set $WS3 "3-"
-set $WS4 "4-"
-set $WS5 "5-"
-set $WS6 "6-"
-set $WS7 "7-"
-set $WS8 "8-"
-set $WS9 "9-"
-set $WS10 "10-"
+set $WS1 "1:"
+set $WS2 "2:"
+set $WS3 "3:"
+set $WS4 "4:"
+set $WS5 "5:"
+set $WS6 "6:"
+set $WS7 "7:"
+set $WS8 "8:"
+set $WS9 "9:"
+set $WS10 "10:"
 
 bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
@@ -144,6 +147,9 @@ bindsym $mod+x border pixel 5
 # media
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%- #decrease sound volume
+
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -178,22 +184,22 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set_from_resource $black color0 #FF0000
-set_from_resource $red color1 #FF0000
-set_from_resource $green color2 #FF0000
-set_from_resource $yellow color3 #FF0000
-set_from_resource $blue color4 #FF0000
-set_from_resource $magenta color5 #FF0000
-set_from_resource $cyan color6 #FF0000
-set_from_resource $white color7 #FF0000
-set_from_resource $bblack color8 #FF0000
-set_from_resource $bred color9 #FF0000
-set_from_resource $bgreen color10 #FF0000
-set_from_resource $byellow color11 #FF0000
-set_from_resource $bblue color12 #FF0000
+set_from_resource $black    color0 #FF0000
+set_from_resource $red      color1 #FF0000
+set_from_resource $green    color2 #FF0000
+set_from_resource $yellow   color3 #FF0000
+set_from_resource $blue     color4 #FF0000
+set_from_resource $magenta  color5 #FF0000
+set_from_resource $cyan     color6 #FF0000
+set_from_resource $white    color7 #FF0000
+set_from_resource $bblack   color8 #FF0000
+set_from_resource $bred     color9 #FF0000
+set_from_resource $bgreen   color10 #FF0000
+set_from_resource $byellow  color11 #FF0000
+set_from_resource $bblue    color12 #FF0000
 set_from_resource $bmagenta color13 #FF0000
-set_from_resource $bcyan color14 #FF0000
-set_from_resource $bwhite color15 #FF0000
+set_from_resource $bcyan    color14 #FF0000
+set_from_resource $bwhite   color15 #FF0000
 
 # class                 border  background  text    indicator   child_border
 client.focused          $blue   $blue       $bwhite $blue   
@@ -209,9 +215,9 @@ workspace_auto_back_and_forth yes
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    i3bar_command ~/.i3/lemonbar.sh
-}
+# bar {
+#     i3bar_command "~/.i3/lemonpy/lemon.py"
+# }
 
 assign [class="chromium"] $WS2
 assign [class="Firefox"] $WS2
@@ -226,8 +232,8 @@ assign [class="Steam"] $WS10
 bindsym $mod+Pause exec ~/.i3/power_screen.sh
 
 # gaps
-gaps inner 10
-gaps outer 10
+gaps inner 5
+gaps outer 5
 
 
 # workspace $WS6 gaps inner 0
@@ -235,11 +241,13 @@ gaps outer 10
 # exec --no-startup-id conky -c ~/.config/lemonbar_conky
 exec --no-startup-id xflux -l 40 -g 8
 exec --no-startup-id urxvtd -q -o -f
-exec --no-startup-id compton --config ~/.config/compton.conf
+exec --no-startup-id seq 0 2 | xargs -l1 -I@ compton --config ~/.config/compton.conf -b -d :0.@
 # exec --no-startup-id chromium
 exec --no-startup-id thunar
+exec --no-startup-id parcellite
 exec --no-startup-id feh --bg-fill ~/.wallpapers/risk.jpg
 # exec --no-startup-id feh --bg-center ~/.wallpapers/leviathan.jpg --image-bg white
-exec --no-startup-id ~/.scripts/album_cover.sh
-exec --no-startup-id ~/.scripts/mpd_notification.sh
+# exec --no-startup-id ~/.scripts/music/album_cover.sh
+exec --no-startup-id ~/.scripts/music/mpd_notification.sh
 # exec --no-startup-id ~/.i3/workspace6.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh

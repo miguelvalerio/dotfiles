@@ -32,8 +32,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+
 xinput set-prop "Razer  Razer Abyssus" "libinput Accel Speed" -1 &
 urxvtd -q -o -f
+setxkbmap pt
 setxkbmap -option "caps:swapescape"
 
 #twm &

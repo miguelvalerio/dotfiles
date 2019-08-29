@@ -1,10 +1,10 @@
 #!/bin/bash
 
-i3-msg 'workspace 6-; exec urxvt -hold -e "ncmpcpp"'
+i3-msg 'workspace 6:; exec urxvt -hold -e "ncmpcpp"'
 sleep 0.5
-i3-msg 'focus parent; split v; exec urxvt -hold -e ncmpcpp --screen browser --config ~/.ncmpcpp/alternative'
+i3-msg 'focus parent; split v; exec urxvt -hold -e ncmpcpp --screen browser --config ~/.ncmpcpp/config'
 sleep 0.5
-i3-msg 'focus child; split h; exec ~/.scripts/display_cover.sh'
+i3-msg 'focus child; split h; exec ~/.scripts/music/display_cover.sh'
 sleep 0.5
 for i in {1..5} 
 do

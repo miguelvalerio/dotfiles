@@ -1,6 +1,0 @@
-BG = '#282828'
-FG = '#ebdbb2'
-FOC_FG = '#458588'
-FOC_BG = '#ebdbb2'
-ACT_FG = '#ebdbb2'
-ACT_BG = '#282828'
