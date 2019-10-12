@@ -92,6 +92,9 @@ man() {
 
 alias rxvt=urxvt
 alias ssh="TERM='xterm' /usr/bin/ssh"
+alias spotify="/usr/bin/spotify --force-device-scale-factor=2"
+alias open="xdg-open"
+
 
 export WORKON_HOME=~/.virtualenvs
 VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
@@ -114,6 +117,8 @@ fi
 export EDITOR=/usr/bin/vim
 export SUDO_EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
 # export QT_STYLE_OVERRIDE=GTK+
 #
 # fish && exit

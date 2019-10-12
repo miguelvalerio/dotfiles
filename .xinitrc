@@ -1,4 +1,6 @@
 #!/bin/sh
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -35,10 +37,10 @@ fi
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
+xrandr --dpi 192
 xinput set-prop "Razer  Razer Abyssus" "libinput Accel Speed" -1 &
 urxvtd -q -o -f
 setxkbmap pt
-setxkbmap -option "caps:swapescape"
 
 #twm &
 #xclock -geometry 50x50-1+1 &

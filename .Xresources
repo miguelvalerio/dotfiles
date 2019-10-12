@@ -142,7 +142,7 @@ URxvt.color250: #d5c4a1
 ! *color15: nord6
 
 ! Xft settings
-Xft.dpi:                96
+Xft.dpi:                192
 Xft.antialias:          true
 Xft.autohint:           false
 Xft.hinting:            fale
@@ -160,8 +160,8 @@ URxvt.url-launcher:             /usr/bin/xdg-open
 URxvt.matcher.button:           1
 URxvt.iso14755:                 False
 URxvt.termName:                 rxvt-unicode-256color
-URxvt.font:                     xft:source code pro for powerline:semibold:pixelsize=15:antialias=true:hinting=true, xft:SauceCodePro\ Nerd\ Font\ Mono:regular:pixelsize=13:antialias:false, xft:Font Awesome:regular:pixelsize=13:antialias=true:hinting=true
-URxvt.boldFont:                 xft:source code pro for powerline:bold:pixelsize=15:antialias=true:hinting=true, xft:Font Awesome:regular:pixelsize=13:antialias=true:hinting=true
+URxvt.font:                     xft:source code pro for powerline:semibold:size=10:antialias=true:hinting=true, xft:SauceCodePro\ Nerd\ Font\ Mono:regular:size=10:antialias:false, xft:Font Awesome:regular:size=10:antialias=true:hinting=true
+URxvt.boldFont:                 xft:source code pro for powerline:bold:size=10:antialias=true:hinting=true, xft:Font Awesome:regular:size=10:antialias=true:hinting=true
 URxvt.perl-ext-common:          default,clipboard,url-select,keyboard-select,selection-to-clipboard,resize-font
 URxvt.url-select.launcher:      chromium
 URxvt.url-select.underline:     true

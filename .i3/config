@@ -74,7 +74,7 @@ bindsym $mod+Control+k move workspace to output up
 bindsym $mod+Control+l move workspace to output right
 
 # lock
-bindsym $mod+mod1+l exec --no-startup-id ~/betterlockscreen --lock -u ~/.wallpapers/risk.jpg
+bindsym $mod+Mod1+l exec --no-startup-id betterlockscreen -l
 
 # split in horizontal orientation
 bindsym $mod+b split h
@@ -230,6 +230,11 @@ assign [class="Transmission-gtk"] $WS8
 assign [class="Steam"] $WS10
 
 bindsym $mod+Pause exec ~/.i3/power_screen.sh
+
+# headset config
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 
 # gaps
 gaps inner 5
