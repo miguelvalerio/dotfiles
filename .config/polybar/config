@@ -51,14 +51,14 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = source code pro for powerline:size=16:antialias=true:hinting=true
+font-0 = source code pro for powerline:size=10:antialias=true:hinting=true
 font-2 = unifont:size=20:antialias=false
 font-1 = Font Awesome:regular:size=16:antialias=true:hinting=true
 font-3 = siji:size=16
 
 modules-left = i3
 modules-center = spotify
-modules-right = xbacklight alsa memory cpu wlan eth battery date powermenu
+modules-right = xbacklight pulseaudio memory cpu wlan eth battery date
 
 tray-position = right
 tray-padding = 2
@@ -120,7 +120,7 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-underline= ${xrdb:color4:#222}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
@@ -130,7 +130,6 @@ label-unfocused-padding = 2
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
 label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
@@ -167,14 +166,14 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = "cpu "
 format-prefix-foreground = ${colors.foreground-alt}
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = "mem "
 format-prefix-foreground = ${colors.foreground-alt}
 label = %percentage_used%%
 
@@ -225,7 +224,7 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = time
 format-prefix-foreground = ${colors.foreground-alt}
 
 label = %date% %time%
@@ -233,57 +232,13 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
-label-volume-foreground = ${root.foreground}
+format-volume = vol <label-volume>
+format-volume-foreground = ${colors.foreground-alt}
+label-volume = %percentage%%
+label-volume-foreground = ${colors.foreground}
 
 label-muted = 🔇 muted
 label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
