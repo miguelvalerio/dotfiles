@@ -52,6 +52,7 @@
 *color19:      base02
 *color20:      base04
 *color21:      base06
+*accent:       #009688
 ! *background: #282828
 ! *foreground: #ebdbb2
 ! ! Black + DarkGrey
