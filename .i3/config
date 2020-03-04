@@ -200,9 +200,10 @@ set_from_resource $bblue    color12 #FF0000
 set_from_resource $bmagenta color13 #FF0000
 set_from_resource $bcyan    color14 #FF0000
 set_from_resource $bwhite   color15 #FF0000
+set_from_resource $accent   accent #FF0000
 
 # class                 border  background  text    indicator   child_border
-client.focused          $blue   $blue       $bwhite $blue   
+client.focused          $accent   $accent       $bwhite $accent   
 client.focused_inactive $black  $black      $bwhite $black 
 client.unfocused        $black  $black      $bwhite $black
 client.urgent           $black  $black      $bwhite $black
