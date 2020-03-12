@@ -227,15 +227,3 @@ URxvt.transparent: false
 
 URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger:  C-Up
-
-! Rofi
-rofi.opacity:           90
-rofi.width:             30
-rofi.lines:             5
-rofi.font:              Source Code Pro 9
-rofi.separator-style:   none
-rofi.hide-scrollbar:    true
-rofi.padding:           20
-rofi.eh:                2
-rofi.bw:                8
-rofi.bc:                #458588
