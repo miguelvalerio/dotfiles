@@ -1,42 +1,31 @@
 "Vundle
-let g:pymode_python = 'python3'
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
-Plugin 'raimondi/delimitmate'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'morhetz/gruvbox'
-Plugin 'arcticicestudio/nord-vim'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
-" Plugin 'vim-syntastic/syntastic'
-" Plugin 'python-mode/python-mode'
-" Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'klen/python-mode'
-Plugin 'chrisbra/Colorizer'
-Plugin 'fatih/vim-go'
+Plugin 'chriskempson/base16-vim'
+Plugin 'vim-syntastic/syntastic'
 filetype plugin indent on
 " set termguicolors
 set t_Co=256
+let base16colorspace=256
 
 set encoding=utf-8
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
-let g:gruvbox_bold=1
 " let g:gruvbox_italic=1
-let g:gruvbox_termcolors=16
-set background=dark
-colorscheme gruvbox
-let g:gruvbox_contrast_dark='hard'
-" colorscheme nord
+
+colorscheme base16-material-darker
 
 set relativenumber
 syntax enable
@@ -93,6 +82,18 @@ noremap <right> <C-w>>
 noremap <up> <C-w>+
 noremap <down> <C-w>-
 
+"Close stuff
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
+" YCM"
+nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
+
 let NERDTreeIgnore = ['\.pyc$', '__pycache__$']
 
 if has("autocmd")
@@ -101,12 +102,6 @@ endif
 "
 " sessions
 set ssop-=options    " do not store global and local values in a session
-" let g:syntastic_python_checkers = ['flake8']
-let g:pymode_folding = 0
-" let g:pymode_lint_checkers = ['pep8']
-let g:pymode_rope = 1
-let g:pymode_rope_complete_on_dot = 1
-" let g:pymode_lint_ignore = "E501,W"
 
 nmap <F8> :TagbarToggle<CR>
 

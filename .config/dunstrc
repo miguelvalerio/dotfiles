@@ -78,7 +78,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 0
+    transparency = 20
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -131,6 +131,11 @@
     # Horizontal padding.
     horizontal_padding = 8
 
+    frame_width = 10
+
+    frame_color = "#212121"
+
+
     # Define a color for the separator.
     # possible values are:
     #  * auto: dunst tries to find a color fitting to the background;
@@ -155,10 +160,7 @@
 
     # Paths to default icons.
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-
-[frame]
-    width = 5
-    color = "#e0e0e0"
+    
 
 [shortcuts]
 
@@ -184,18 +186,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
+    background = "#eeffff"
+    foreground = "#212121"
     timeout = 5
 
 [urgency_normal]
-    background = "#000000"
-    foreground = "#ffffff"
+    background = "#eeffff"
+    foreground = "#212121"
     timeout = 5
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
+    background = "#eeffff"
+    foreground = "#212121"
     timeout = 0
 
 
