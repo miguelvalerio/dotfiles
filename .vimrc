@@ -14,18 +14,21 @@ Plugin 'majutsushi/tagbar'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'chriskempson/base16-vim'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'chrisbra/Colorizer'
 filetype plugin indent on
 " set termguicolors
 set t_Co=256
-let base16colorspace=256
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 set encoding=utf-8
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
 " let g:gruvbox_italic=1
-
-colorscheme base16-material-darker
+let g:colorizer_auto_color=1
 
 set relativenumber
 syntax enable

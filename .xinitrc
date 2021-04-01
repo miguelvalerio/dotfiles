@@ -1,6 +1,7 @@
 #!/bin/sh
-xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
+xrandr --output HDMI-1 --scale 1.5
+xrandr --output eDP-1 --scale 0.9999x0.9999
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -37,7 +38,6 @@ fi
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
-xrandr --dpi 192
 xinput set-prop "Razer  Razer Abyssus" "libinput Accel Speed" -1 &
 urxvtd -q -o -f
 setxkbmap pt
@@ -48,3 +48,5 @@ setxkbmap pt
 #xterm -geometry 80x20+494-0 &
 #exec xterm -geometry 80x66+0+0 -name login
 exec i3
+
+/usr/bin/prime-offload
