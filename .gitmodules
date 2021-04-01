@@ -6,3 +6,4 @@
 	path = .config/base16-shell
 	url = https://github.com/camflint/base16-shell
     branch = camflint/fixnord
+    update = merge
