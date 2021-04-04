@@ -202,11 +202,11 @@ set_from_resource $bcyan    color14 #FF0000
 set_from_resource $bwhite   color15 #FF0000
 set_from_resource $accent   accent #FF0000
 
-# class                 border  background  text    indicator   child_border
-client.focused          $accent   $accent       $bwhite $accent   
-client.focused_inactive $black  $black      $bwhite $black 
-client.unfocused        $black  $black      $bwhite $black
-client.urgent           $black  $black      $bwhite $black
+# class                 border   background  text    indicator   child_border
+client.focused          $accent  $accent     $black  $accent   
+client.focused_inactive $black   $black      $white  $black 
+client.unfocused        $black   $black      $white  $black
+client.urgent           $black   $black      $white  $black
 
 new_window pixel 5
 
@@ -256,4 +256,4 @@ exec --no-startup-id feh --bg-fill ~/.wallpapers/risk.jpg
 # exec --no-startup-id ~/.scripts/music/album_cover.sh
 exec --no-startup-id ~/.scripts/music/mpd_notification.sh
 # exec --no-startup-id ~/.i3/workspace6.sh
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh --shapes

@@ -30,6 +30,7 @@
 *background:   base00
 #endif
 *cursorColor:  base05
+*accent:       base08
 
 *color0:       base00
 *color1:       base08
